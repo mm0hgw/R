@@ -1,0 +1,87 @@
+	Changelog
+
+	0.1.8:
+formatR shift
+
+	0.1.7:
+add dataCombo class
+optimised C code
+
+	0.1.6:
+generation moved to 'ballot' package
+
+	0.1.5:
+merge growCombo
+merge superChoose
+merge combnGen
+
+	0.1.4:
+chunk.combo()
+print -> S3Method	
+	
+	0.1.3:
+slice.combo()	 
+print.combo() 
+invert.combo()
+intersect.combo() with multiple args
+	
+	0.1.5:
+merge growCombo
+merge superChoose
+merge combnGen
+
+	0.1.4:
+chunk.combo()
+print -> S3Method	
+	
+slice.combo()	 
+print.combo() 
+invert.combo()
+intersect.combo() with multiple args
+	
+	0.1.4:
+chunk.combo()
+print -> S3Method	
+	
+slice.combo()	 
+print.combo() 
+invert.combo()
+intersect.combo() with multiple args
+	
+slice.combo()	 
+print.combo() 
+invert.combo()
+intersect.combo() with multiple args
+	
+	
+	
+	0.1.2:
+add set operations
+	
+	0.1.1:
+bugfix until is work
+	0.1.2:
+add set operations
+	
+	0.1.1:
+bugfix until is work
+	0.1.2:
+add set operations
+	
+	0.1.1:
+bugfix until is work
+	0.1.2:
+add set operations
+	
+	0.1.1:
+bugfix until is work
+	0.1.2:
+add set operations
+space optimisations
+set tests
+	
+	0.1.1:
+bugfix until is work
+	
+	0.1:
+Initial effort

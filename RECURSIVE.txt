@@ -1,0 +1,100 @@
+
+
+# recursive new version
+
+combnG_recursive <- function(i,n,k){
+	if ( k == 0) return(vector())
+	if ( k == 1) return(i)
+	ch <- choose(n-1,k-1)
+	if (i <= ch){
+		return(
+			c(1,
+				1+combnG_recursive(
+					i,
+					n-1,
+					k-1
+				)
+			)
+		)
+	}else{
+		return(
+			1+combnG_recursive(
+				i-ch,
+				n-1,
+				k
+			)
+		)
+	}
+}
+
+
+# original version
+
+lutEnv <- new.env()
+
+tagNK <- function(n,k){
+	paste(sep='C',n,k)
+}
+
+add_combo <- function(n,k){
+	tag <- tagNK(n,k)
+	assign(tag,combn(n,k),envir=lutEnv)
+}
+
+rm_combo <- function(n,k){
+	tag <- tagNK(n,k)
+	rm(tag,envir=lutEnv)
+}
+
+exists_combo <- function(n,k){
+	tag <- tagNK(n,k)
+	exists(tag,envir=lutEnv)
+}
+
+index_combo <- function(i,n,k){
+	if(!exists_combo(n,k)){
+		add_combo(n,k)
+	}
+	tag <- tagNK(n,k)
+	lut <- matrix(get(tag,envir=lutEnv),nrow=k)
+	lut[,i]
+}
+
+compare_test <- function(n,k){
+	sample_size <- min(1e5,choose(n,k))
+	offset <- choose(n,k)-sample_size
+	cat('Running historic, memory based version\n')
+	print(
+		system.time(
+			out1 <- as.vector(index_combo(seq(sample_size)+offset,n,k))		
+		)
+	)
+	
+	
+	cat('Running recursive R version\n')
+	print(
+		system.time(
+			out2 <- do.call(c,
+				lapply(seq(sample_size)+offset,
+					combnG_recursive,n,k
+				)
+			)
+		)
+	)
+	
+	cat('\nRunning looped C version\n')
+	print(
+		system.time(
+			out3 <- as.vector(ultraCombo::combnG(seq(sample_size)+offset,n,k,cbind))
+		)
+	)
+	
+	cat(paste('\nnumber of 1,2 mismatches', sum(out1 != out2), '\n'))
+	cat(paste('\nnumber of 1,3 mismatches', sum(out1 != out3), '\n'))
+	cat(paste('\nnumber of 2,3 mismatches', sum(out2 != out3), '\n'))
+	
+}
+
+compare_test(20,10)
+compare_test(32,7)
+compare_test(115,7)
