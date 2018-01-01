@@ -53,6 +53,12 @@ is.User.class <- function(object,...) inherits('User.class',object)
 #'@method as User.class
 as.User.class <- function(object,...) User.class(object)
 
+#'@method format User.class
+format.User.class <- function(x,...) paste(collapse=':',sapply(x,format))
+ 
+#'@method print User.class
+print.User.class <- function(x,...)cat(format(x,...),'\n')
+
 #'@method valid gecos
 valid.gecos <- function(x,class1='gecos'){
 	if(typeof(x)!='character')
@@ -91,3 +97,53 @@ is.gecos <- function(object,...) inherits('gecos',object)
 
 #'@method as gecos
 as.gecos <- function(object,...) gecos(object)
+
+#'@method format gecos
+format.gecos <- function(x,...)	paste(collapse=',',x)
+
+#'@method print gecos
+print.gecos  <- function(x,...)cat(format(x,...),'\n')
+
+#'@method valid User.list
+valid.User.list <- function(x,class1='User.list'){
+	if(typeof(x)!='list')
+	return(F)
+	if(!all(sapply(x,is.User.class)))
+	return(F)
+	return(T)
+}
+
+
+
+#'User.list
+#'@param x an object to form a 'User.list' from
+#'@export
+User.list<-function(x='/etc/passwd',...){
+	UseMethod('User.list',x)
+}
+
+#'@method User.list default
+User.list.default <- function(x,...){
+class(x)<-'User.list'
+	if(!valid(x))stop()
+x
+}
+
+#'@method User.list character
+User.list.character <- function(x,...){
+	if(length(x)==1&&file.exists(x))x<-scan(x,what='character',sep='\n')
+	x<-lapply(x,as.User.class)
+	NextMethod()
+}
+
+#'@method is User.list
+is.User.list <- function(object,...) inherits('User.list',object)
+
+#'@method as User.list
+as.User.list <- function(object,...) User.list(object)
+
+#'@method format User.list
+format.User.list <- function(x,...) paste(collapse='\n',sapply(x,format))
+ 
+#'@method print User.list
+print.User.list <- function(x,...)cat(format(x,...),'\n')
