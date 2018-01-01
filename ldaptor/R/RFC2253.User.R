@@ -55,7 +55,7 @@ User.class.character <- function(x, ...) {
 }
 
 #'@method is User.class
-is.User.class <- function(object, ...) inherits("User.class", object)
+is.User.class <- function(object, ...) inherits(object,"User.class")
 
 #'@method as.User.class default
 as.User.class <- function(object, ...) User.class(object)
@@ -102,7 +102,7 @@ gecos.character <- function(x, ...) {
 }
 
 #'@method is gecos
-is.gecos <- function(object, ...) inherits("gecos", object)
+is.gecos <- function(object, ...) inherits( object,'gecos')
 
 #'@method as gecos
 as.gecos <- function(object, ...) gecos(object)
@@ -147,7 +147,7 @@ User.list.character <- function(x, ...) {
 }
 
 #'@method is User.list
-is.User.list <- function(object, ...) inherits("User.list", object)
+is.User.list <- function(object, ...) inherits( object,'User.list')
 
 #'@method as User.list
 as.User.list <- function(object, ...) User.list(object)
