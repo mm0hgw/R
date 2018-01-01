@@ -131,7 +131,7 @@ User.list <- function(x = "/etc/passwd", ...) {
 
 #'@method User.list default
 User.list.default <- function(x, ...) {
-	print(x)
+    print(x)
     class(x) <- "User.list"
     if (!valid(x)) 
         stop()
