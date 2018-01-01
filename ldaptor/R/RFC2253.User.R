@@ -54,7 +54,7 @@ User.class.character <- function(x, ...) {
 #'@method is User.class
 is.User.class <- function(object, ...) inherits("User.class", object)
 
-#'@method as User.class
+#'@method as.User.class default
 as.User.class <- function(object, ...) User.class(object)
 
 #'@method format User.class
@@ -100,8 +100,8 @@ gecos.character <- function(x, ...) {
 #'@method is gecos
 is.gecos <- function(object, ...) inherits("gecos", object)
 
-#'@method as gecos
-as.gecos <- function(object, ...) gecos(object)
+#'@method as.gecos default
+as.gecos.default <- function(object, ...) gecos(object)
 
 #'@method format gecos
 format.gecos <- function(x, ...) paste(collapse = ",", x)
@@ -144,8 +144,8 @@ User.list.character <- function(x='/etc/passwd', ...) {
 #'@method is User.list
 is.User.list <- function(object, ...) inherits("User.list", object)
 
-#'@method as User.list
-as.User.list <- function(object, ...) User.list(object)
+#'@method as.User.list default
+as.User.list.default <- function(object, ...) User.list(object)
 
 #'@method format User.list
 format.User.list <- function(x, ...) paste(collapse = "\n", sapply(x, format))
