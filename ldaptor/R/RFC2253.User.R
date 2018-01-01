@@ -82,7 +82,7 @@ format.User.class.basedn.class <- function(x, basedn = NULL, ...) {
         "{SASL}", y[1], "@", realm)) + ldapkv("uidNumber", y[3]) + ldapkv("gidNumber", 
         y[4]) + ldapkv("gecos", y[5]) + ldapkv("homeDirectory", y[6]) + ldapkv("loginShell", 
         y[7])
-    ldapquery(list(pkey, basedn, skey, kvlist))
+    format(ldapquery(list(pkey, basedn, skey, kvlist)))
 }
 
 #'@method print User.class
