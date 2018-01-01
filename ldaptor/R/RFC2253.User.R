@@ -76,7 +76,7 @@ format.User.class.basedn.class <- function(x, basedn=NULL, ...) {
 	y <- sapply(x,format)
 	pkey <- ldapkv('uid',y[1])
 	skey <- list(ldapkv('ou','People'))
-	kvlist <- Userkvlist + ldapkv('cn',y[1]) + ldapkv('userPassword',paste(sep='','{SASL}',y[1],'@',realm)) + ldapkv('uidNumber',y[3]) + ldapkv('gidNumber',y[4])+ ldapkv('gecos',y[5]))+ ldapkv('homeDirectory',y[6])+ ldapkv('loginShell',y[7])
+	kvlist <- Userkvlist + ldapkv('cn',y[1]) + ldapkv('userPassword',paste(sep='','{SASL}',y[1],'@',realm)) + ldapkv('uidNumber',y[3]) + ldapkv('gidNumber',y[4])+ ldapkv('gecos',y[5])+ ldapkv('homeDirectory',y[6])+ ldapkv('loginShell',y[7])
 	ldapquery(pkey,basedn,skey,kvlist)
 }
 
