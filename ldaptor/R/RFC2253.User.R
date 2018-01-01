@@ -61,7 +61,24 @@ is.User.class <- function(object, ...) inherits(object, "User.class")
 as.User.class <- function(object, ...) User.class(object)
 
 #'@method format User.class
-format.User.class <- function(x, ...) paste(collapse = ":", sapply(x, format))
+format.User.class <- function(x, basedn=NULL, ...) UseMethod('format.User.class',basedn)
+
+#'@method format.User.class default
+format.User.class.default <- function(x, basedn=NULL, ...) paste(collapse = ":", sapply(x, format))
+
+Userkvlist <- structure(list(structure(c("objectClass", "top"), class = "ldapkv"), 
+    structure(c("objectClass", "account"), class = "ldapkv"), structure(c("objectClass", 
+        "posixAccount"), class = "ldapkv")), class = "ldapkvlist")
+
+#'@method format.User.class basedn.class
+format.User.class.basedn.class <- function(x, basedn=NULL, ...) {
+	realm <- toupper(domain.class(basedn))
+	y <- sapply(x,format)
+	pkey <- ldapkv('uid',y[1])
+	skey <- list(ldapkv('ou','People'))
+	kvlist <- Userkvlist + ldapkv('cn',y[1]) + ldapkv('userPassword',paste(sep='','{SASL}',y[1],'@',realm)) + ldapkv('uidNumber',y[3]) + ldapkv('gidNumber',y[4])+ ldapkv('gecos',y[5]))+ ldapkv('homeDirectory',y[6])+ ldapkv('loginShell',y[7])
+	ldapquery(pkey,basedn,skey,kvlist)
+}
 
 #'@method print User.class
 print.User.class <- function(x, ...) cat(format(x, ...), "\n")
@@ -153,7 +170,15 @@ is.User.list <- function(object, ...) inherits(object, "User.list")
 as.User.list <- function(object, ...) User.list(object)
 
 #'@method format User.list
-format.User.list <- function(x, ...) paste(collapse = "\n", sapply(x, format))
+format.User.list <- function(x, basedn=NULL, ...) UseMethod('format.User.list',basedn)
+
+#'@method format.User.list default
+format.User.list.default <- function(x, basedn=NULL, ...) paste(collapse = "\n", sapply(x, format))
+
+#'@method format.User.list basedn.class
+format.User.list.basedn.class <- function(x, basedn=NULL, ...) {
+	paste(collapse='\n', sapply( x, format, basedn=basedn))
+}
 
 #'@method print User.list
 print.User.list <- function(x, ...) cat(format(x, ...), "\n")
