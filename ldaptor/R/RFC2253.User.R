@@ -125,7 +125,7 @@ valid.User.list <- function(x, class1 = "User.list") {
 #'User.list
 #'@param x an object to form a 'User.list' from
 #'@export
-User.list <- function(x = "/etc/passwd", ...) {
+User.list <- function(x, ...) {
     UseMethod("User.list", x)
 }
 
@@ -139,7 +139,7 @@ User.list.default <- function(x, ...) {
 }
 
 #'@method User.list character
-User.list.character <- function(x = "/etc/passwd", ...) {
+User.list.character <- function(x, ...) {
     if (length(x) == 1 && file.exists(x)) 
         x <- scan(x, what = "character", sep = "\n")
     x <- lapply(x, as.User.class)
