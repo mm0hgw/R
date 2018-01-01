@@ -72,11 +72,13 @@ format.ipv4.subnetlist <- function(x, basedn = NULL, dhcpStatements = list(), ..
 }
 
 #'@method format.ipv4.subnetlist default
-format.ipv4.subnetlist.basedn.class <- function(x, basedn, dhcpStatements = list(), ...){ 
-	if(!valid.domain.class(basedn))stop()
-	args <- match.call()[-1]
-	args['basedn'] <- basedn.class(basedn)
-	do.call(format,args)
+format.ipv4.subnetlist.basedn.class <- function(x, basedn, dhcpStatements = list(), 
+    ...) {
+    if (!valid.domain.class(basedn)) 
+        stop()
+    args <- match.call()[-1]
+    args["basedn"] <- basedn.class(basedn)
+    do.call(format, args)
 }
 
 #'@method format.ipv4.subnetlist basedn.class
