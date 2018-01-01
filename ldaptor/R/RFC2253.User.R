@@ -92,8 +92,8 @@ gecos.default <- function(x, ...) {
 gecos.character <- function(x, ...) {
     if (length(x) == 1) {
         x <- strsplit(x, split = ",")[[1]]
-        if(length(x)<5)
-        x <- c(x, rep("", length(x) - 5))
+        if (length(x) < 5) 
+            x <- c(x, rep("", length(x) - 5))
     }
     NextMethod()
 }
