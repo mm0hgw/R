@@ -36,7 +36,14 @@ User.class <- function(x, ...) {
 #'@method User.class default
 User.class.default <- function(x, ...) {
     if (length(x) == 7) 
-        x <- lapply(seq(7), function(i) get(paste(sep = "", "as.", UserClasses[i]))(list(x[[i]])))
+        x <- list( 
+        as.character(x[[1]]),
+        as.character(x[[2]]),
+        as.integer(x[[3]]),
+        as.integer(x[[4]]),
+        as.gecos(x[[5]]),
+        as.character(x[[6]]),
+        as.character(x[[7]]))
     class(x) <- "User.class"
     print(x)
     if (!valid(x)) 
