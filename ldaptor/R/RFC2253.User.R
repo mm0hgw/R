@@ -82,7 +82,9 @@ gecos <- function(x, ...) {
 
 #'@method gecos default
 gecos.default <- function(x, ...) {
+    print(x)
     class(x) <- "gecos"
+    print(x)
     if (!valid(gecos)) 
         stop()
     names(x) <- c("Full Name", "Location", "Office #", "Home #", "Other")
