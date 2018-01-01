@@ -37,7 +37,7 @@ User.class <- function(x, ...) {
 User.class.default <- function(x, ...) {
     if (length(x) == 7) 
         x <- lapply(seq(7), function(i) if (class(x[[i]]) == UserClasses[i]) 
-            x[[i]] else as(x[[i]], UserClasses[i]))
+            x[[i]] else do.call(paste(sep='','as.', UserClasses[i]),list(x[[i]]))
     class(x) <- "User.class"
     if (!valid(x)) 
         stop()
@@ -100,8 +100,8 @@ gecos.character <- function(x, ...) {
 #'@method is gecos
 is.gecos <- function(object, ...) inherits("gecos", object)
 
-#'@method as.gecos default
-as.gecos.default <- function(object, ...) gecos(object)
+#'@method as gecos
+as.gecos <- function(object, ...) gecos(object)
 
 #'@method format gecos
 format.gecos <- function(x, ...) paste(collapse = ",", x)
