@@ -146,8 +146,8 @@ User.list.character <- function(x = "/etc/passwd", ...) {
 #'@method is User.list
 is.User.list <- function(object, ...) inherits("User.list", object)
 
-#'@method as.User.list default
-as.User.list.default <- function(object, ...) User.list(object)
+#'@method as User.list
+as.User.list <- function(object, ...) User.list(object)
 
 #'@method format User.list
 format.User.list <- function(x, ...) paste(collapse = "\n", sapply(x, format))
