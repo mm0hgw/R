@@ -5,12 +5,13 @@ UserClasses <- c("character", "character", "integer", "integer", "gecos", "chara
 
 #'@method valid User.class
 valid.User.class <- function(x, class1 = "User.class") {
-    if (typeof(x) != "list") 
+    if (typeof(x) != "list") {
+        print('wrong type')
         return(F)
-    if (length(x) != 7) 
-        return(F)
-    if (any(sapply(x, length) != 1)) 
-        return(F)
+        }
+    if (length(x) != 7) {
+         print('wrong length')
+       return(F)}
     if (any(sapply(x, class) != UserClasses)) 
         return(F)
     if (x[[1]] == "") 
@@ -82,9 +83,7 @@ gecos <- function(x, ...) {
 
 #'@method gecos default
 gecos.default <- function(x, ...) {
-    print(x)
     class(x) <- "gecos"
-    print(x)
     if (!valid(x)) 
         stop()
     names(x) <- c("Full Name", "Location", "Office #", "Home #", "Other")
