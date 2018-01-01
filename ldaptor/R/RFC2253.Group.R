@@ -1,5 +1,4 @@
 
 #'@method valid Group.class
-valid.Group.class <- function(x,class1){
+valid.Group.class <- function(x, class1) {
 }
- 
