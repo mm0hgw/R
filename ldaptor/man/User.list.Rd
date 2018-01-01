@@ -4,7 +4,7 @@
 \alias{User.list}
 \title{User.list}
 \usage{
-User.list(x = "/etc/passwd", ...)
+User.list(x, ...)
 }
 \arguments{
 \item{x}{an object to form a 'User.list' from}
