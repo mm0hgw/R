@@ -185,7 +185,6 @@ format.User.list.default <- function(x, basedn = NULL, ...) paste(collapse = "\n
 #'@method format.User.list basedn.class
 format.User.list.basedn.class <- function(x, basedn = NULL, ...) {
     args <- lapply(x, format, basedn)
-    print(args)
     args$sep <- "\n"
     do.call(paste, args)
 }
