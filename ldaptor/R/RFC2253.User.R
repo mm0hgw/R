@@ -35,11 +35,11 @@ User.class <- function(x, ...) {
 
 #'@method User.class default
 User.class.default <- function(x, ...) {
-    print(x)
     if (length(x) == 7) 
         x <- lapply(seq(7), function(i) do.call(paste(sep = "", "as.", UserClasses[i]), 
             list(x[[i]])))
     class(x) <- "User.class"
+    print(x)
     if (!valid(x)) 
         stop()
     names(x) <- c("Username", "Password", "uid", "gid", "gecos", "home", "shell")
