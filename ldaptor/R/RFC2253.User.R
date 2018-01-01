@@ -35,6 +35,7 @@ User.class <- function(x, ...) {
 
 #'@method User.class default
 User.class.default <- function(x, ...) {
+	print(x)
     if (length(x) == 7) 
         x <- lapply(seq(7), function(i) do.call(paste(sep = "", "as.", UserClasses[i]), 
             list(x[[i]])))
