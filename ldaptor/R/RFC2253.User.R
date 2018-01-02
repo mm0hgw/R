@@ -160,7 +160,7 @@ User.list.default <- function(x, ...) {
 }
 
 #'@method User.list character
-User.list.character <- function(x,...) {
+User.list.character <- function(x, ...) {
     if (length(x) == 1 && file.exists(x)) 
         x <- scan(x, what = "character", sep = "\n")
     x <- lapply(x, as.User.class)
@@ -191,16 +191,19 @@ format.User.list.basedn.class <- function(x, basedn = NULL, ...) {
 #'@method print User.list
 print.User.list <- function(x, ...) cat(format(x, ...), "\n")
 
-UserGen <- function(usernames,domain,uidRange=c(1500,65500),defaultGroup=NULL,homePart='/home',defaultShell='/bin/bash'){
-if(!is.domain.class(domain))domain <- domain.class(domain)
-n<-length(usernames)
-pws <- paste(sep='@',usernames,toupper(domain))
-uids <- sample(do.call(seq,as.list(uidRange)),n)
-if(missing(defaultGroup)) gids<-uids else gids<- rep(defaultGroup,n)
-gec <- lapply(usernames,gecos)
-homes <- paste(sep='/',homePart,usernames)
-shells <- rep(defaultShell,n)
-x <- cbind(usernames,pws,uids,gids,gec,homes,shells)
-User.list(lapply(seq(n),function(i)User.class(x[i,])))
+UserGen <- function(usernames, domain, uidRange = c(1500, 65500), defaultGroup = NULL, 
+    homePart = "/home", defaultShell = "/bin/bash") {
+    if (!is.domain.class(domain)) 
+        domain <- domain.class(domain)
+    n <- length(usernames)
+    pws <- paste(sep = "@", usernames, toupper(domain))
+    uids <- sample(do.call(seq, as.list(uidRange)), n)
+    if (missing(defaultGroup)) 
+        gids <- uids else gids <- rep(defaultGroup, n)
+    gec <- lapply(usernames, gecos)
+    homes <- paste(sep = "/", homePart, usernames)
+    shells <- rep(defaultShell, n)
+    x <- cbind(usernames, pws, uids, gids, gec, homes, shells)
+    User.list(lapply(seq(n), function(i) User.class(x[i, ])))
 }
 
