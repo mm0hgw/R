@@ -204,5 +204,3 @@ x <- cbind(usernames,pws,uids,gids,gec,homes,shells)
 User.list(lapply(seq(n),function(i)User.class(x[i,])))
 }
 
-UserGen (NATO,'nato.org')
-
