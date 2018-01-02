@@ -195,10 +195,10 @@ UserGen <- function(usernames, domain, uidRange = c(1500, 65500), defaultGroup =
     if (!is.domain.class(domain)) 
         domain <- domain.class(domain)
     n <- length(usernames)
-    if(n < uidRange[2]-uidRange[1]+1){
+    if (n < uidRange[2] - uidRange[1] + 1) {
     }
     pws <- paste(sep = "@", usernames, toupper(domain))
-    uids <- sample(seq(from=uidRange[1],length.out=n), n)
+    uids <- sample(seq(from = uidRange[1], length.out = n), n)
     if (missing(defaultGroup)) 
         gids <- uids else gids <- rep(defaultGroup, n)
     gec <- lapply(usernames, gecos)
