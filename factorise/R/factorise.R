@@ -117,6 +117,7 @@ primeGen <- function(from, to) {
 
 #' factorise
 #'@param x a 'numeric' integer describing a number to factorise.
+#'@importFrom multiUnion multiUnion
 #'@export
 factorise <- function(x) {
     if (length(x) > 1) 
@@ -125,5 +126,8 @@ factorise <- function(x) {
     stopifnot(x%%1 == 0)
     stopifnot(x > 0)
     p <- getPrimes(floor(sqrt(x)))
-    p[(x%%p) == 0]
+    p1 <- p[(x%%p) == 0]
+    p2 <- x/p1
+    p2 <- p2[sapply(p2,function(q)length(factorise(q))==0)]
+    multiUnion(p1,p2)
 }
