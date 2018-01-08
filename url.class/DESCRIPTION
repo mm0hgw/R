@@ -1,0 +1,10 @@
+Package: url.class
+Title: url.class, A URL parser.
+Version: 0.1.8
+Authors@R: person("Dale",  email = "dale@piratepress.org", role = c("aut", "cre", "cph"))
+Description: RFC3986 Appendix B
+Depends:
+    R (>= 3.3.2),
+License: GPL-2
+LazyData: true
+RoxygenNote: 6.0.1
