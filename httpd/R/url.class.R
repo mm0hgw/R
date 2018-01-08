@@ -29,6 +29,12 @@ url.class.default <- function(x, ...) {
     x
 }
 
+#'@method as url.class
+as.url.class <- function(x,...) UseMethod("url.class", x)
+
+#'@method is url.class
+is.url.class <- function(x) inherits(x,'url.class')
+
 #'@method format url.class
 format.url.class <- function(x, ...) {
     out <- paste(collapse = "", x[c(2, 3)])
