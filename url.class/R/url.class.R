@@ -14,18 +14,18 @@ url.class <- function(x, ...) {
     UseMethod("url.class", x)
 }
 
-RFC3986Regex <- "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?"
-urlElems <- c("\\2", "\\4", "\\5", "\\7", "\\9")
+RFC3986 <- "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?"
+urlElems <- c(service="\\2",authority="\\4", path="\\5", queries="\\6", fragments="\\8")
 
 #'@method url.class default
-url.class.default <- function(x, ...) {
+url.class.default <- function(x, regex=RFC3986, urlElems=urlElems ...) {
     if (length(x) == 1) {
-        x <- sapply(urlElems, gsub, pattern = RFC3986Regex, x = x)
+        x <- sapply(urlElems, gsub, pattern = regex, x = x)
     }
     if (valid.url.class(x) != TRUE) 
         stop()
     class(x) <- "url.class"
-    names(x) <- c("service", "authority", "path", "query", "fragment")
+    names(x) <- names(urlElems)
     x
 }
 
@@ -51,3 +51,4 @@ format.url.class <- function(x, ...) {
 print.url.class <- function(x, ...) {
     cat(format(x, ...), "\n")
 }
+
