@@ -17,8 +17,8 @@ pullBuildDir <- function(HDDDir = "~/git/linux", buildDir = "/tmp/linux") {
     buildPackage::gitFetch()
     if (!dir.exists(buildDir)) 
         dir.create(buildDir, recursive = TRUE)
-    system(paste(sep = "", "cp -uR ", HDDDir, "/* ", buildDir))
-    system(paste(sep = "", "cp ", HDDDir, "/.config ", buildDir, "/.config"))
+    system(paste(sep = "", "cp -uvR ", HDDDir, "/* ", buildDir))
+    system(paste(sep = "", "cp -v ", HDDDir, "/.config ", buildDir, "/.config"))
     setwd(buildDir)
 }
 
@@ -34,7 +34,7 @@ buildKernel <- function(HDDDir = "~/git/linux", buildDir = "/tmp/linux", local =
     system(paste(sep = "", "nice -19 distcc-pump make ", job, " -j", jobs + 1, " -l", 
         jobs, " LOCALVERSION=", paste("-", local, sep = ""), " KDEB_PKGVERSION=", 
         rev))
-    system(paste(sep = "", "cp -u ", buildDir, "/.config ", HDDDir, "/.config"))
+    system(paste(sep = "", "cp -uv ", buildDir, "/.config ", HDDDir, "/.config"))
     if (install == TRUE) {
         installKernel(buildDir)
     }
