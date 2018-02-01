@@ -10,33 +10,33 @@ combnGenElemGenR <- function(p) {
         } else {
             i <- p$ifun(index)
         }
-        i <- p$n 
-        j <- p$k 
+        i <- p$n
+        j <- p$k
         oldch <- ch <- p$ch
         while ((j > 0) && (ch > integer.precision.limit)) {
-         while(i > (ch <- (oldch * i) / j)){
-         i <- i -  ch
-         oldch <- oldch - ch
-         i <- i - 1
-         }
-         out[k-j+1] <- n-i+1
-         oldch <- ch
-         i <- i-1
-         j<-j-1
+            while (i > (ch <- (oldch * i)/j)) {
+                i <- i - ch
+                oldch <- oldch - ch
+                i <- i - 1
+            }
+            out[k - j + 1] <- n - i + 1
+            oldch <- ch
+            i <- i - 1
+            j <- j - 1
         }
         i <- as.numeric(i)
         while (j > 0) {
-         while(i > (ch <- (oldch * i) / j)){
-         i <- i -  ch
-         oldch <- oldch - ch
-         i <- i - 1
-         }
-         out[k-j+1] <- n-i+1
-         oldch <- ch
-         i <- i-1
-         j<-j-1
+            while (i > (ch <- (oldch * i)/j)) {
+                i <- i - ch
+                oldch <- oldch - ch
+                i <- i - 1
+            }
+            out[k - j + 1] <- n - i + 1
+            oldch <- ch
+            i <- i - 1
+            j <- j - 1
         }
-            out[p$k] <- out[p$k - 1] + as.integer(i)
+        out[p$k] <- out[p$k - 1] + as.integer(i)
         debugCat("combnGenElemR", paste(out, collapse = ","))
         if (p$invert == TRUE) {
             setdiff(seq(p$n), out)
@@ -51,7 +51,7 @@ revCombnGenElemGenR <- function(p) {
     function(x) {
         debugCat("revCombnGenElemR", p$n, ":", paste(collapse = ",", x))
         k <- length(x)
-        stopifnot(k==p$k)
+        stopifnot(k == p$k)
         invert <- FALSE
         if (k > p$n%/%2) {
             invert <- TRUE
@@ -59,29 +59,30 @@ revCombnGenElemGenR <- function(p) {
             debugCat("revCombnGenElemR", p$n, ":", paste(collapse = ",", x))
             k <- length(x)
         }
-        oldch<-p$ch
-        i<-n
-        j<-k
-        out<-0
-        pl <- k-1
+        oldch <- p$ch
+        i <- n
+        j <- k
+        out <- 0
+        pl <- k - 1
         p <- 0
-        while(p<pl){
-        ql<-x[p+2]-x[p+1]-1
-        q<-0
-        while(q<ql){
-        ch <- (oldch * j )/i
-        out <- out +ch
-        oldch <- olch -ch
-        i<-i-1
-        q<-q+1
+        while (p < pl) {
+            ql <- x[p + 2] - x[p + 1] - 1
+            q <- 0
+            while (q < ql) {
+                ch <- (oldch * j)/i
+                out <- out + ch
+                oldch <- olch - ch
+                i <- i - 1
+                q <- q + 1
+            }
+            ch <- (oldch * j)/i
+            oldch <- ch
+            i <- i - 1
+            j <- j - 1
+            p <- p + 1
         }
-        ch <- (oldch * j )/i
-        oldch <- ch
-        i<-i-1
-        j<-j-1
-        p<-p+1
-        }    
- out    }
+        out
+    }
 }
 
 # Generate an Element handler for combnGen

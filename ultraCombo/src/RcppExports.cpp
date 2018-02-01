@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // combnGenElemRcpp
 IntegerVector combnGenElemRcpp(NumericVector xv, IntegerVector nv, IntegerVector kv, NumericVector chv);
-RcppExport SEXP ultraCombo_combnGenElemRcpp(SEXP xvSEXP, SEXP nvSEXP, SEXP kvSEXP, SEXP chvSEXP) {
+RcppExport SEXP _ultraCombo_combnGenElemRcpp(SEXP xvSEXP, SEXP nvSEXP, SEXP kvSEXP, SEXP chvSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -21,7 +21,7 @@ END_RCPP
 }
 // revCombnGenElemRcpp
 NumericVector revCombnGenElemRcpp(IntegerVector xv, IntegerVector nv, NumericVector chv);
-RcppExport SEXP ultraCombo_revCombnGenElemRcpp(SEXP xvSEXP, SEXP nvSEXP, SEXP chvSEXP) {
+RcppExport SEXP _ultraCombo_revCombnGenElemRcpp(SEXP xvSEXP, SEXP nvSEXP, SEXP chvSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -34,8 +34,8 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"ultraCombo_combnGenElemRcpp", (DL_FUNC) &ultraCombo_combnGenElemRcpp, 4},
-    {"ultraCombo_revCombnGenElemRcpp", (DL_FUNC) &ultraCombo_revCombnGenElemRcpp, 3},
+    {"_ultraCombo_combnGenElemRcpp", (DL_FUNC) &_ultraCombo_combnGenElemRcpp, 4},
+    {"_ultraCombo_revCombnGenElemRcpp", (DL_FUNC) &_ultraCombo_revCombnGenElemRcpp, 3},
     {NULL, NULL, 0}
 };
 
