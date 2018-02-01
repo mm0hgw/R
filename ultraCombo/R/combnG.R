@@ -31,7 +31,6 @@
 #'indices <- combnGen2(index)
 #'# generate result
 #'combnGen(indices)
-#'@useDynLib ultraCombo
 #'@export
 combnGG <- function(n, k) {
     debugCat("combnGG", n, k)
