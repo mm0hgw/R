@@ -10,11 +10,11 @@ combnGenElemGenR <- function(p) {
         } else {
             i <- p$ifun(index)
         }
-        i <- p$n
-        j <- p$k
-        oldch <- ch <- p$ch
+        i <- n<-p$n
+        j <- k<-p$k
+        oldch <- p$ch
         if (p$indexType == "bigz") {
-            while ((j > 0) && (ch > integer.precision.limit)) {
+            while ((j > 0) && (oldch > integer.precision.limit)) {
                 while (i > (ch <- (oldch * i)/j)) {
                   i <- i - ch
                   oldch <- oldch - ch
@@ -26,6 +26,7 @@ combnGenElemGenR <- function(p) {
                 j <- j - 1
             }
             i <- as.numeric(i)
+            oldch <- as.numeric(oldch)
         }
         while (j > 0) {
             while (i > (ch <- (oldch * i)/j)) {
@@ -62,7 +63,7 @@ revCombnGenElemGenR <- function(p) {
             k <- length(x)
         }
         oldch <- p$ch
-        i <- n
+        i <- p$n
         j <- k
         out <- 0
         pl <- k - 1
