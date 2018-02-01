@@ -51,6 +51,7 @@ revCombnGenElemGenR <- function(p) {
     function(x) {
         debugCat("revCombnGenElemR", p$n, ":", paste(collapse = ",", x))
         k <- length(x)
+        stopifnot(k==p$k)
         invert <- FALSE
         if (k > p$n%/%2) {
             invert <- TRUE
@@ -58,34 +59,29 @@ revCombnGenElemGenR <- function(p) {
             debugCat("revCombnGenElemR", p$n, ":", paste(collapse = ",", x))
             k <- length(x)
         }
-        z <- c(0, x, p$n + 1)
-        v <- vector()
-        y <- length(z)
-        for (i in seq(2, y)) {
-            v <- c(z[i] - z[i - 1] - 1, v)
+        oldch<-p$ch
+        i<-n
+        j<-k
+        out<-0
+        pl <- k-1
+        p <- 0
+        while(p<pl){
+        ql<-x[p+2]-x[p+1]-1
+        q<-0
+        while(q<ql){
+        ch <- (oldch * j )/i
+        out <- out +ch
+        oldch <- olch -ch
+        i<-i-1
+        q<-q+1
         }
-        debugCat("revCombnGenElemR", "v:", paste(collapse = ",", v))
-        out <- 1 + v[2]
-        cn <- vector()
-        ck <- vector()
-        for (j in seq(length(v))) {
-            if (j > 2) {
-                if (v[j] > 0) {
-                  offset <- j - 2 + sum(v[seq(j - 1)])
-                  cn <- c(cn, seq(v[j]) + offset)
-                  ck <- c(ck, rep(j - 2, v[j]))
-                }
-            }
-            out <- sum(c(1, v[2], superChoose(cn, ck)))
-        }
-        if (invert == TRUE) {
-            out <- 1 + superChoose(p$n, k) - out
-        }
-        debugCat("revCombnGenElemR", "out:", out)
-        debugCat("revCombnGenElemR", "test:", paste(collapse = ",", combnG(out, p$n, 
-            k)))
-        out
-    }
+        ch <- (oldch * j )/i
+        oldch <- ch
+        i<-i-1
+        j<-j-1
+        p<-p+1
+        }    
+ out    }
 }
 
 # Generate an Element handler for combnGen
