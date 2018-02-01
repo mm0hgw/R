@@ -38,10 +38,10 @@
 #'combnG(i,n,k)
 #'stopifnot(sum(g!=.Last.value)==0)
 #'@export
-revCombnGG <- function(n,k) {
+revCombnGG <- function(n, k) {
     debugCat("revCombnGG", n)
     p <- getProfile(n, k)
-        revCombnGenElem <- revCombnGenElemGenR(p)
+    revCombnGenElem <- revCombnGenElemGenR(p)
     revCombnGen <- revCombnGenGen(revCombnGenElem, n)
     return(revCombnGen)
 }
