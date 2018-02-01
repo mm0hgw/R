@@ -47,7 +47,7 @@ combnGG <- function(n, k) {
         }
     }
     if (k != 1 && k != n) {
-            combnGenElem <- combnGenElemGenR(p)
+        combnGenElem <- combnGenElemGenR(p)
     }
     combnGen <- function(index, .combine = rbind) {
         debugCat("combnGen", n, k)

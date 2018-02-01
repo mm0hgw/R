@@ -13,19 +13,19 @@ combnGenElemGenR <- function(p) {
         i <- p$n
         j <- p$k
         oldch <- ch <- p$ch
-        if(p$indexType=='bigz'){
-        while ((j > 0) && (ch > integer.precision.limit)) {
-            while (i > (ch <- (oldch * i)/j)) {
-                i <- i - ch
-                oldch <- oldch - ch
+        if (p$indexType == "bigz") {
+            while ((j > 0) && (ch > integer.precision.limit)) {
+                while (i > (ch <- (oldch * i)/j)) {
+                  i <- i - ch
+                  oldch <- oldch - ch
+                  i <- i - 1
+                }
+                out[k - j + 1] <- n - i + 1
+                oldch <- ch
                 i <- i - 1
+                j <- j - 1
             }
-            out[k - j + 1] <- n - i + 1
-            oldch <- ch
-            i <- i - 1
-            j <- j - 1
-        }
-        i <- as.numeric(i)
+            i <- as.numeric(i)
         }
         while (j > 0) {
             while (i > (ch <- (oldch * i)/j)) {
@@ -83,8 +83,8 @@ revCombnGenElemGenR <- function(p) {
             j <- j - 1
             p <- p + 1
         }
-        if (invert == TRUE){
-        	out <- setdiff(seq(p$n),out)
+        if (invert == TRUE) {
+            out <- setdiff(seq(p$n), out)
         }
         out
     }
