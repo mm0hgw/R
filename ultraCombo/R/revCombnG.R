@@ -12,7 +12,7 @@
 #'
 #'@examples
 #'n<-10
-#'revCombnGen<-revCombnGG(n)
+#'revCombnGen<-revCombnGG(n,7)
 #'i<-cbind(seq(4),5,6,7,8,9,10)
 #'j<-revCombnGen(i)
 #'j
@@ -29,7 +29,7 @@
 #'}
 #'out[order(out)]
 #'}
-#'revCombnGen<-revCombnGG(n)
+#'revCombnGen<-revCombnGG(n,length(g))
 #'g<-game(n)
 #'g
 #'i<-revCombnGen(g)
@@ -38,14 +38,10 @@
 #'combnG(i,n,k)
 #'stopifnot(sum(g!=.Last.value)==0)
 #'@export
-revCombnGG <- function(n) {
+revCombnGG <- function(n,k) {
     debugCat("revCombnGG", n)
-    p <- getProfile(n, n%/%2)
-    if (p$indexType == "bigz") {
+    p <- getProfile(n, k)
         revCombnGenElem <- revCombnGenElemGenR(p)
-    } else {
-        revCombnGenElem <- revCombnGenElemGenC(p)
-    }
     revCombnGen <- revCombnGenGen(revCombnGenElem, n)
     return(revCombnGen)
 }

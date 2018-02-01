@@ -74,7 +74,7 @@ revCombnGenElemGenR <- function(p) {
             while (q < ql) {
                 ch <- (oldch * j)/i
                 out <- out + ch
-                oldch <- olch - ch
+                oldch <- oldch - ch
                 i <- i - 1
                 q <- q + 1
             }
