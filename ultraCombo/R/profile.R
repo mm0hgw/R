@@ -19,7 +19,7 @@ getProfile <- function(n, k) {
     if (k > n%/%2) {
         out$k <- n - k
         out$invert <- TRUE
-        out$imirror <- superChoose(n, k) + 1
+        out$imirror <- out$ch + 1
     } else {
         out$k <- k
         out$invert <- FALSE

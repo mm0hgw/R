@@ -1,7 +1,6 @@
 # Generate an Element handler for combnGen
 combnGenElemGenR <- function(p) {
     debugCat("combnGenElemGenR", p$indexType, p$n, p$k)
-    combnGenEnv <- new.env()
     function(index) {
         debugCat("combnGenElemR", p$indexType, p$n, p$k, index)
         out <- rep(0, p$k)
@@ -11,35 +10,33 @@ combnGenElemGenR <- function(p) {
         } else {
             i <- p$ifun(index)
         }
-        n <- p$n - 1
-        k <- p$k - 1
-        while ((k > 0) && (gmp::chooseZ(n + 1, k + 1) > integer.precision.limit)) {
-            debugCat("combnGenElemR", n, k, i, paste(out, collapse = ","))
-            if (i > gmp::chooseZ(n, k)) {
-                i <- i - gmp::chooseZ(n, k)
-                n <- n - 1
-            } else {
-                out[p$k - k] <- p$n - n
-                k <- k - 1
-                n <- n - 1
-            }
+        i <- p$n 
+        j <- p$k 
+        oldch <- ch <- p$ch
+        while ((j > 0) && (ch > integer.precision.limit)) {
+         while(i > (ch <- (oldch * i) / j)){
+         i <- i -  ch
+         oldch <- oldch - ch
+         i <- i - 1
+         }
+         out[k-j+1] <- n-i+1
+         oldch <- ch
+         i <- i-1
+         j<-j-1
         }
-        debugCat("combnGenElemR", n, k, i, paste(out, collapse = ","))
-        if (k > 0) {
-            name <- paste(sep = "", n + 1, "g", k + 1)
-            if (exists(name, envir = combnGenEnv)) {
-                combnGen <- get(name, envir = combnGenEnv)
-            } else {
-                combnGen <- combnGG(n + 1, k + 1)
-                assign(name, combnGen, envir = combnGenEnv)
-            }
-            subout <- combnGen(i)
-            debugCat("combnGenElemR", paste(subout, collapse = ","))
-            out[seq(p$k - k, p$k)] <- subout + p$n - n - 1
-            debugCat("combnGenElemR", paste(out, collapse = ","))
-        } else {
+        i <- as.numeric(i)
+        while (j > 0) {
+         while(i > (ch <- (oldch * i) / j)){
+         i <- i -  ch
+         oldch <- oldch - ch
+         i <- i - 1
+         }
+         out[k-j+1] <- n-i+1
+         oldch <- ch
+         i <- i-1
+         j<-j-1
+        }
             out[p$k] <- out[p$k - 1] + as.integer(i)
-        }
         debugCat("combnGenElemR", paste(out, collapse = ","))
         if (p$invert == TRUE) {
             setdiff(seq(p$n), out)
