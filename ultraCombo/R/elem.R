@@ -13,6 +13,7 @@ combnGenElemGenR <- function(p) {
         i <- p$n
         j <- p$k
         oldch <- ch <- p$ch
+        if(p$indexType=='bigz'){
         while ((j > 0) && (ch > integer.precision.limit)) {
             while (i > (ch <- (oldch * i)/j)) {
                 i <- i - ch
@@ -25,6 +26,7 @@ combnGenElemGenR <- function(p) {
             j <- j - 1
         }
         i <- as.numeric(i)
+        }
         while (j > 0) {
             while (i > (ch <- (oldch * i)/j)) {
                 i <- i - ch
@@ -81,48 +83,9 @@ revCombnGenElemGenR <- function(p) {
             j <- j - 1
             p <- p + 1
         }
+        if (invert == TRUE){
+        	out <- setdiff(seq(p$n),out)
+        }
         out
     }
 }
-
-# Generate an Element handler for combnGen
-combnGenElemGenC <- function(p) {
-    debugCat("combnGenElemGenC", p$indexType, p$n, p$k)
-    function(index) {
-        debugCat("combnGenElemC", p$indexType, p$n, p$k, index)
-        if (p$invert == TRUE) {
-            index <- p$imirror - index
-            debugCat("combnGenElemC", "inversed index:", index)
-        }
-        out <- combnGenElemRcpp(index, p$n, p$k, p$ch)
-        if (p$invert == TRUE) {
-            out <- setdiff(seq(p$n), out)
-        }
-        debugCat("combnGenElemC", paste(collapse = ",", out))
-        out
-    }
-}
-
-# Generate an Element handler for combnGen
-revCombnGenElemGenC <- function(p) {
-    debugCat("revCombnGenElemGenC", p$indexType, p$n)
-    function(x) {
-        debugCat("revCombnGenElemC", p$indexType, p$n, ":", paste(collapse = ",", 
-            x))
-        k <- length(x)
-        invert <- FALSE
-        if (k > p$n%/%2) {
-            invert <- TRUE
-            x <- setdiff(seq(p$n), x)
-            debugCat("revCombnGenElemR", p$n, ":", paste(collapse = ",", x))
-            k <- length(x)
-        }
-        out <- revCombnGenElemRcpp(x, p$n)
-        if (invert == TRUE) {
-            out <- 1 + superChoose(p$n, k) - out
-        }
-        debugCat("revCombnGenElemC", "out", out)
-        out
-    }
-}
-

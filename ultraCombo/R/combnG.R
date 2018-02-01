@@ -47,11 +47,7 @@ combnGG <- function(n, k) {
         }
     }
     if (k != 1 && k != n) {
-        if (p$indexType != "bigz") {
-            combnGenElem <- combnGenElemGenC(p)
-        } else {
             combnGenElem <- combnGenElemGenR(p)
-        }
     }
     combnGen <- function(index, .combine = rbind) {
         debugCat("combnGen", n, k)
