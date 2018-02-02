@@ -33,10 +33,12 @@ combnGenElemGenR <- function(p) {
         debugPrint(out)
         while (j > 1) {
             while (x > (ch <- (oldch * i)/j)) {
+                   	debugCat('x:',x,'ch:',ch,'i:',i,'j:',j)
                 x <- x - ch
                 oldch <- oldch - ch
                 i <- i - 1
             }
+                   	debugCat('x:',x,'ch:',ch,'i:',i,'j:',j)
             out[k - j + 1] <- n - i + 1
             oldch <- ch
             i <- i - 1
