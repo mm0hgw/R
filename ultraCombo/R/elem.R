@@ -28,6 +28,7 @@ combnGenElemGenR <- function(p) {
             x <- as.numeric(x)
             oldch <- as.numeric(oldch)
         }
+        debugPrint(out)
         while (j > 0) {
             while (x > (ch <- (oldch * i)/j)) {
                 x <- x - ch
@@ -39,7 +40,9 @@ combnGenElemGenR <- function(p) {
             i <- i - 1
             j <- j - 1
         }
-        out[p$k] <- out[p$k - 1] + as.integer(i)
+        debugPrint(out)
+        out[p$k] <- out[p$k - 1] + as.integer(x)
+        debugPrint(out)
         debugCat("combnGenElemR", paste(out, collapse = ","))
         if (p$invert == TRUE) {
             setdiff(seq(p$n), out)
