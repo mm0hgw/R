@@ -1,22 +1,22 @@
 # Generate an Element handler for combnGen
 combnGenElemGenR <- function(p) {
     debugCat("combnGenElemGenR", p$indexType, p$n, p$k)
-    function(index) {
+    function(x) {
         debugCat("combnGenElemR", p$indexType, p$n, p$k, index)
         out <- rep(0, p$k)
         if (p$invert == TRUE) {
-            i <- p$ifun(p$imirror - index)
+            x <- p$ifun(p$imirror - x)
             debugCat("combnGenElemR", "inverted index:", index)
         } else {
-            i <- p$ifun(index)
+            x <- p$ifun(index)
         }
         i <- n <- p$n
         j <- k <- p$k
         oldch <- p$ch
         if (p$indexType == "bigz") {
             while ((j > 0) && (oldch > integer.precision.limit)) {
-                while (i > (ch <- (oldch * i)/j)) {
-                  i <- i - ch
+                while (x > (ch <- (oldch * i)/j)) {
+                  x <- x - ch
                   oldch <- oldch - ch
                   i <- i - 1
                 }
@@ -25,12 +25,12 @@ combnGenElemGenR <- function(p) {
                 i <- i - 1
                 j <- j - 1
             }
-            i <- as.numeric(i)
+            x <- as.numeric(x)
             oldch <- as.numeric(oldch)
         }
         while (j > 0) {
-            while (i > (ch <- (oldch * i)/j)) {
-                i <- i - ch
+            while (x > (ch <- (oldch * i)/j)) {
+                x <- x - ch
                 oldch <- oldch - ch
                 i <- i - 1
             }
