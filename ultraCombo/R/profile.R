@@ -17,14 +17,14 @@ getProfile <- function(n, k) {
         }
     }
     if (k > n%/%2) {
-        out$k <- n - k
         out$invert <- TRUE
         out$imirror <- out$ch + 1
     } else {
-        out$k <- k
         out$invert <- FALSE
     }
     out$n <- n
+        out$k <- k
+    out$ifun <- get(paste(sep='.','as',out$indexType))
     # debugCat('getProfile','returning ...')
     return(out)
 }
