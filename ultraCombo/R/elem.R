@@ -47,12 +47,9 @@ combnGenElemGenR <- function(p) {
         debugPrint(out)
         out[p$k] <- out[p$k - 1] + as.integer(x)
         debugPrint(out)
-        debugCat("combnGenElemR", paste(out, collapse = ","))
         if (p$invert == TRUE) {
-            return(setdiff(seq(p$n), out))
-        } else {
-            return(out)
-        }
+            out<-setdiff(seq(p$n), out)
+        } debugCat("combnGenElemR", paste(out, collapse = ","))
     }
 }
 
