@@ -1,4 +1,4 @@
-debugFlag <- FALSE
+debugFlag <- T
 
 debugCat <- function(...) {
     if (debugFlag == TRUE) {
