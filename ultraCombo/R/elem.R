@@ -8,7 +8,7 @@ combnGenElemGenR <- function(p) {
             x <- p$ifun(p$imirror - x)
             debugCat("combnGenElemR", "inverted index:", x)
         } else {
-            x <- p$ifun(index)
+            x <- p$ifun(x)
         }
         i <- n <- p$n
         j <- k <- p$k
