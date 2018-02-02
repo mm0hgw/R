@@ -49,7 +49,8 @@ combnGenElemGenR <- function(p) {
         debugPrint(out)
         if (p$invert == TRUE) {
             out<-setdiff(seq(p$n), out)
-        } debugCat("combnGenElemR", paste(out, collapse = ","))
+        } 
+        debugCat("combnGenElemR", paste(out, collapse = ","))
     }
 }
 
