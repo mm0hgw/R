@@ -2,11 +2,11 @@
 combnGenElemGenR <- function(p) {
     debugCat("combnGenElemGenR", p$indexType, p$n, p$k)
     function(x) {
-        debugCat("combnGenElemR", p$indexType, p$n, p$k, index)
+        debugCat("combnGenElemR", p$indexType, p$n, p$k, x)
         out <- rep(0, p$k)
         if (p$invert == TRUE) {
             x <- p$ifun(p$imirror - x)
-            debugCat("combnGenElemR", "inverted index:", index)
+            debugCat("combnGenElemR", "inverted index:", x)
         } else {
             x <- p$ifun(index)
         }
