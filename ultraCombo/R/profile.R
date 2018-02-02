@@ -23,8 +23,8 @@ getProfile <- function(n, k) {
         out$invert <- FALSE
     }
     out$n <- n
-        out$k <- k
-    out$ifun <- get(paste(sep='.','as',out$indexType))
+    out$k <- k
+    out$ifun <- get(paste(sep = ".", "as", out$indexType))
     # debugCat('getProfile','returning ...')
     return(out)
 }
