@@ -38,7 +38,7 @@ combnGenElemGenR <- function(p) {
                 oldch <- oldch - ch
                 i <- i - 1
             }
-                   	debugCat('x:',x,'ch:',ch,'i:',i,'j:',j)
+            debugCat("x:", x, "ch:", ch, "i:", i, "j:", j)
             out[k - j + 1] <- n - i + 1
             oldch <- ch
             i <- i - 1
