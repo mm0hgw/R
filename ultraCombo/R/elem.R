@@ -15,7 +15,7 @@ combnGenElemGenR <- function(p) {
         oldch <- p$ch
         if (p$indexType == "bigz") {
             while ((j > 1) && (oldch > integer.precision.limit)) {
-                while (x > (ch <- (oldch * i)/j)) {
+                while (x > (ch <- (oldch * j)/i)) {
                   debugCat("x:", x, "ch:", ch, "i:", i, "j:", j)
                   x <- x - ch
                   oldch <- oldch - ch
@@ -32,7 +32,7 @@ combnGenElemGenR <- function(p) {
         }
         debugPrint(out)
         while (j > 1) {
-            while (x > (ch <- (oldch * i)/j)) {
+            while (x > (ch <- (oldch * j)/i)) {
                    	debugCat('x:',x,'ch:',ch,'i:',i,'j:',j)
                 x <- x - ch
                 oldch <- oldch - ch
