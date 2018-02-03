@@ -5,7 +5,7 @@ combnGenElemGenR <- function(p) {
         debugCat("combnGenElemR", p$indexType, p$n, p$k, x)
         oldch <- p$ch
         i <- n <- p$n
-         k <- p$k
+        k <- p$k
         if (p$invert == TRUE) {
             x <- p$ifun(p$imirror - x)
             k <- n - k
