@@ -3,16 +3,18 @@ combnGenElemGenR <- function(p) {
     debugCat("combnGenElemGenR", p$indexType, p$n, p$k)
     function(x) {
         debugCat("combnGenElemR", p$indexType, p$n, p$k, x)
-        out <- rep(0, p$k)
+        oldch <- p$ch
+        i <- n <- p$n
+         k <- p$k
         if (p$invert == TRUE) {
             x <- p$ifun(p$imirror - x)
+            k <- n - k
             debugCat("combnGenElemR", "inverted index:", x)
         } else {
             x <- p$ifun(x)
         }
-        i <- n <- p$n
-        j <- k <- p$k
-        oldch <- p$ch
+        out <- rep(0, p$k)
+        j <- k
         if (p$indexType == "bigz") {
             while ((j > 1) && (oldch > integer.precision.limit)) {
                 while (x > (ch <- (oldch * j)/i)) {
@@ -45,7 +47,7 @@ combnGenElemGenR <- function(p) {
             j <- j - 1
         }
         debugPrint(out)
-        out[p$k] <- out[p$k - 1] + as.integer(x)
+        out[k] <- out[k - 1] + as.integer(x)
         debugPrint(out)
         if (p$invert == TRUE) {
             out <- setdiff(seq(p$n), out)
