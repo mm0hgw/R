@@ -71,10 +71,10 @@ revCombnGenElemGenR <- function(p) {
         j <- k
         out <- 0
         pl <- k - 1
-        p <- 0
-        while (p < pl) {
-            debugCat("p:", p, pl, out,i,j)
-            ql <- x[p + 2] - x[p + 1] - 1
+        r <- 0
+        while (r < rl) {
+            debugCat("r:", r, rl, out,i,j)
+            ql <- x[r + 2] - x[r + 1] - 1
             q <- 0
             while (q < ql) {
                 debugCat("q:", q, ql, out,i,j)
@@ -88,7 +88,7 @@ revCombnGenElemGenR <- function(p) {
             oldch <- ch
             i <- i - 1
             j <- j - 1
-            p <- p + 1
+            r<- r + 1
         }
         if (invert == TRUE) {
             out <- setdiff(seq(p$n), out)
