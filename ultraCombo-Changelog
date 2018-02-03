@@ -1,5 +1,8 @@
 	Changelog
 
+	0.1.9:
+reimplement C backend in R
+
 	0.1.8:
 formatR shift
 
