@@ -29,18 +29,18 @@
 #'}
 #'out[order(out)]
 #'}
-#'revCombnGen<-revCombnGG(n,length(g))
 #'g<-game(n)
 #'g
+#'revCombnGen<-revCombnGG(n,length(g))
 #'i<-revCombnGen(g)
 #'k<-length(g)
 #'print(i)
 #'combnG(i,n,k)
 #'stopifnot(sum(g!=.Last.value)==0)
 #'@export
-revCombnGG <- function(n, k) {
+revCombnGG <- function(n) {
     debugCat("revCombnGG", n)
-    p <- getProfile(n, k)
+    p <- getProfile(n, n%/%2)
     revCombnGenElem <- revCombnGenElemGenR(p)
     revCombnGen <- revCombnGenGen(revCombnGenElem, n)
     return(revCombnGen)
