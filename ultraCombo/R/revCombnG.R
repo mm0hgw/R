@@ -12,7 +12,7 @@
 #'
 #'@examples
 #'n<-10
-#'revCombnGen<-revCombnGG(n,7)
+#'revCombnGen<-revCombnGG(n)
 #'i<-cbind(seq(4),5,6,7,8,9,10)
 #'j<-revCombnGen(i)
 #'j
@@ -29,9 +29,9 @@
 #'}
 #'out[order(out)]
 #'}
+#'revCombnGen<-revCombnGG(n)
 #'g<-game(n)
 #'g
-#'revCombnGen<-revCombnGG(n,length(g))
 #'i<-revCombnGen(g)
 #'k<-length(g)
 #'print(i)
