@@ -4,7 +4,7 @@
 \alias{revCombnGG}
 \title{Reverse Combination Generator Generator}
 \usage{
-revCombnGG(n, k)
+revCombnGG(n)
 }
 \arguments{
 \item{n}{integer < .Machine$integer.max, size of the set from which combination is generated}
@@ -38,9 +38,9 @@ out<-c(l[ceiling(runif(1)*length(l))],out)
 }
 out[order(out)]
 }
-revCombnGen<-revCombnGG(n,length(g))
 g<-game(n)
 g
+revCombnGen<-revCombnGG(n,length(g))
 i<-revCombnGen(g)
 k<-length(g)
 print(i)
