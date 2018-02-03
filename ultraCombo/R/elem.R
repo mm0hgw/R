@@ -66,18 +66,18 @@ revCombnGenElemGenR <- function(p) {
             debugCat("revCombnGenElemR", p$n, ":", paste(collapse = ",", x))
             k <- length(x)
         }
-        oldch <- superChoose(p$n,k)
+        oldch <- superChoose(p$n, k)
         i <- p$n
         j <- k
         out <- 0
         pl <- k - 1
         p <- 0
         while (p < pl) {
-        debugCat('p:',p,pl,out)
+            debugCat("p:", p, pl, out)
             ql <- x[p + 2] - x[p + 1] - 1
             q <- 0
             while (q < ql) {
-        debugCat('q:',q,ql,out)
+                debugCat("q:", q, ql, out)
                 ch <- (oldch * j)/i
                 out <- out + ch
                 oldch <- oldch - ch
