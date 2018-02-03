@@ -59,14 +59,15 @@ revCombnGenElemGenR <- function(p) {
     function(x) {
         debugCat("revCombnGenElemR", p$n, ":", paste(collapse = ",", x))
         k <- length(x)
+        oldch <- superChoose(p$n, k)
         invert <- FALSE
         if (k > p$n%/%2) {
             invert <- TRUE
             x <- setdiff(seq(p$n), x)
             debugCat("revCombnGenElemR", p$n, ":", paste(collapse = ",", x))
             k <- length(x)
+            imirror <- oldch + 1
         }
-        oldch <- superChoose(p$n, k)
         i <- p$n
         j <- k
         out <- x[k] - x[k - 1]
@@ -91,7 +92,7 @@ revCombnGenElemGenR <- function(p) {
             r <- r + 1
         }
         if (invert == TRUE) {
-            out <- setdiff(seq(p$n), out)
+            out <- imirror - out
         }
         out
     }
