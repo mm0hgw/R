@@ -1,6 +1,6 @@
 Package: ultraCombo
 Title: Combination data functions
-Version: 0.1.8
+Version: 0.1.9
 Authors@R: person("Dale",  email = "dale@piratepress.org", role = c("aut", "cre", "cph"))
 Description: Storage and data manipulation functions for combination objects.
 Depends:
