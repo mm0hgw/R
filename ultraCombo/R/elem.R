@@ -69,10 +69,10 @@ revCombnGenElemGenR <- function(p) {
         oldch <- superChoose(p$n, k)
         i <- p$n
         j <- k
-        out <- x[k]-x[k-1]
+        out <- x[k] - x[k - 1]
         r <- 0
         x <- c(0, x)
-        while (r < k-1) {
+        while (r < k - 1) {
             debugCat("r:", r, rl, out, i, j)
             ql <- x[r + 2] - x[r + 1] - 1
             q <- 0
