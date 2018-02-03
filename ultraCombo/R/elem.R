@@ -73,7 +73,7 @@ revCombnGenElemGenR <- function(p) {
         r <- 0
         x <- c(0, x)
         while (r < k-1) {
-            debugCat("r:", r, rl, out, i, j)
+            debugCat("r:", r, k-1, out, i, j)
             ql <- x[r + 2] - x[r + 1] - 1
             q <- 0
             while (q < ql) {
