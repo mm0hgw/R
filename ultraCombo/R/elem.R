@@ -72,7 +72,7 @@ revCombnGenElemGenR <- function(p) {
         out <- 0
         rl <- k - 1
         r <- 0
-        x <- c(1,x)
+        x <- c(1, x)
         while (r < rl) {
             debugCat("r:", r, rl, out, i, j)
             ql <- x[r + 2] - x[r + 1] - 1
