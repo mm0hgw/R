@@ -51,6 +51,7 @@ combnGenElemGenR <- function(p) {
             out <- setdiff(seq(p$n), out)
         }
         debugCat("combnGenElemR", paste(out, collapse = ","))
+        out
     }
 }
 
