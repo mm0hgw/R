@@ -25,7 +25,7 @@ Create a combination object.
 }
 \examples{
 n<-20
-k<-10
+k<-15
 combo<-ultraCombo(seq(choose(n,k)),n,k)
 print(combo)
 object.size(combo$Gen(seq(combo$len)))
