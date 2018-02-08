@@ -15,7 +15,7 @@ urandCap <- function(cap, n = 1) {
 
 #'@method urandCap default
 urandCap.default <- function(cap, n = 1) {
-    sample.int(cap, n, replace=T)
+    sample.int(cap, n, replace = T)
 }
 
 #'@importFrom gmp urand.bigz
