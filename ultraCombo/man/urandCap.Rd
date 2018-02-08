@@ -7,7 +7,7 @@
 urandCap(cap, n = 1)
 }
 \arguments{
-\item{cap}{a 'numeric' positive integer cap}
+\item{cap}{a 'numeric' or 'bigz' positive integer cap}
 
 \item{n}{a 'numeric' positive integer number of observations to produce}
 }
