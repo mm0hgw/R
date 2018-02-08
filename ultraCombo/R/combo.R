@@ -25,9 +25,8 @@ ultraCombo <- function(i, n, k) {
             stop("index out of range")
         }
         combnGen(i[x])
-    },
-    sample=function(sampleSize=1000)ultraCombo(i[urandCap(length(i),sampleSize)],n,k)
-    )
+    }, sample = function(sampleSize = 1000) ultraCombo(i[urandCap(length(i), sampleSize)], 
+        n, k))
     class(out) <- "ultraCombo"
     out
 }
