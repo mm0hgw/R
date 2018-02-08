@@ -18,7 +18,6 @@ urandCap.default <- function(cap, n = 1, ...) {
     sample.int(cap, n, ...)
 }
 
-#'@importFrom gmp urand.bigz as.bigz >.bigz <=.bigz
 #'@method urandCap bigz
 urandCap.bigz <- function(cap, n = 1, replace = F, ...) {
     if (replace == F) 
