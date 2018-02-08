@@ -1,11 +1,11 @@
 Package: ultraCombo
 Title: Combination data functions
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: person("Dale",  email = "dale@piratepress.org", role = c("aut", "cre", "cph"))
 Description: Storage and data manipulation functions for combination objects.
 Depends:
     R (>= 3.3.2)
 License: GPL-2
 LazyData: true
-Imports: bit, methods, utils, gmp, stats
+Imports: bit, methods, utils, gmp
 RoxygenNote: 6.0.1
