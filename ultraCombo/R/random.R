@@ -25,14 +25,15 @@ urandCap.bigz <- function(cap, n = 1, replace = F, ...) {
         stopifnot(n <= cap)
     out <- as.bigz(vector())
     while (length(out) < n) {
-        out <- c(out, sapply(seq(n - length(out)), function(i) {
-            out2 <- 0
-            while (out2 <= 0 || out2 > cap) {
-                out2 <- urand.bigz(1, ceiling(log(cap, 2)), ...)
-            }
-            out2
-        }))
-        print(out)
+    out2 <- as.bigz(vector())
+    n2 <- n-length(out)
+    while (length(out2) < n2) {
+    
+    out2 <- c(out2,urand.bigz(n2-length(out2),ceiling(log(cap,2)),...))
+    out2 <- out2[out2>0&&out2<=cap]
+    }
+    out <-c(out,out2)
+ 
         if (replace == F) {
             out <- unique(out)
         }
