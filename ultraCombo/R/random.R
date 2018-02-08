@@ -20,12 +20,19 @@ urandCap.default <- function(cap, n = 1, ...) {
 
 #'@importFrom gmp urand.bigz
 #'@method urandCap bigz
-urandCap.bigz <- function(cap, n = 1, ...) {
-    sapply(seq(n), function(i) {
-        out <- 0
-        while (out <= 0 || out > cap) {
-            out <- urand.bigz(1, ceiling(log(cap, 2)), ...)
+urandCap.bigz <- function(cap, n = 1, replace=F, ...) {
+out <- vector()
+    while(length(out) < n) {
+    out<-append(out,sapply(seq(n-length(out)),function(i){
+        out2 <- 0
+        while (out2 <= 0 || out2 > cap) {
+            out2 <- urand.bigz(1, ceiling(log(cap, 2)), ...)
         }
-        out
-    })
+        out2
+    }))
+    if(replace==F){
+     out <- unique(out)
+    }
+    }
+    out
 }
