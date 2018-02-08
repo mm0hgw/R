@@ -13,10 +13,9 @@ urandCap <- function(cap, n = 1) {
     UseMethod("urandCap", cap)
 }
 
-#'@importFrom stats runif
 #'@method urandCap default
 urandCap.default <- function(cap, n = 1) {
-    ceiling(runif(n, 0, cap))
+    sample.int(cap, n, replace=T)
 }
 
 #'@importFrom gmp urand.bigz
