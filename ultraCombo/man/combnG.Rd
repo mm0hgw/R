@@ -27,7 +27,7 @@ generate the rest of the table.\cr
 }
 \examples{
 n<-20
-k<-10
+k<-15
 stopifnot(0==sum(combnG(1,n,k)!=seq(k)))
 stopifnot(0==sum(combnG(2,n,k)!=c(seq(k-1),k+1)))
 stopifnot(0==sum(combnG(choose(n,k),n,k)!=seq(to=n,length.out=k)))
