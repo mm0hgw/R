@@ -13,6 +13,7 @@ urandCap <- function(cap, n = 1, ...) {
     UseMethod("urandCap", cap)
 }
 
+
 #'@method urandCap default
 urandCap.default <- function(cap, n = 1, ...) {
     sample.int(cap, n, ...)
