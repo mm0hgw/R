@@ -1,13 +1,15 @@
 #'urandCap
 #'@description Generate random integers in the range 1:cap
-#'@param cap a 'numeric' integer cap
-#'@param n a 'numeric' integer number of observations to produce
+#'@param cap a 'numeric' positive integer cap
+#'@param n a 'numeric' positive integer number of observations to produce
 #'@export
 urandCap <- function(cap, n = 1) {
     stopifnot(length(cap) == 1)
     stopifnot(length(n) == 1)
     stopifnot(cap%%1 == 0)
     stopifnot(n%%1 == 0)
+    stopifnot(cap> 0)
+    stopifnot(n> 0)
     UseMethod("urandCap", cap)
 }
 
