@@ -30,7 +30,7 @@ urandCap.bigz <- function(cap, n = 1, replace = F, ...) {
         cat('inner:\n')
             out2 <- c(out2, urand.bigz(n2 - length(out2), ceiling(log(cap, 2)), ...))
             print(out2)
-            out2 <- out2[out2 > as.bigz(0) && out2 <= cap]
+            out2 <- out2[out2 > as.bigz(0) & out2 <= cap]
             print(out2)
         }
         cat('outer:\n')
