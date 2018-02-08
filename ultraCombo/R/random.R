@@ -48,6 +48,6 @@ urandCap.bigz <- function(cap, n = 1, replace = F, ...) {
 #'@inheritParams gmp::chooseZ
 #'@param sampleSize an integer defining the size of sample to draw. Default 1000.
 #'@export
-sampleCombo <- function(n,k,sampleSize=1000){
-ultraCombo(urandCap(superChoose(n,k),sampleSize),n,k)
-} 
+sampleCombo <- function(n, k, sampleSize = 1000) {
+    ultraCombo(urandCap(superChoose(n, k), sampleSize), n, k)
+}
