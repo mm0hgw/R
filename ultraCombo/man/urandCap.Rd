@@ -4,7 +4,7 @@
 \alias{urandCap}
 \title{urandCap}
 \usage{
-urandCap(cap, n = 1)
+urandCap(cap, n = 1, ...)
 }
 \arguments{
 \item{cap}{a 'numeric' or 'bigz' positive integer cap}
