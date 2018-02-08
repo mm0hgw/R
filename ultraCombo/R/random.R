@@ -21,7 +21,7 @@ urandCap.default <- function(cap, n = 1, ...) {
 #'@importFrom gmp urand.bigz
 #'@method urandCap bigz
 urandCap.bigz <- function(cap, n = 1, replace = F, ...) {
-    out <- vector('bigz')
+    out <- vector("bigz")
     while (length(out) < n) {
         out <- append(out, sapply(seq(n - length(out)), function(i) {
             out2 <- 0
