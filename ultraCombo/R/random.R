@@ -8,8 +8,8 @@ urandCap <- function(cap, n = 1) {
     stopifnot(length(n) == 1)
     stopifnot(cap%%1 == 0)
     stopifnot(n%%1 == 0)
-    stopifnot(cap> 0)
-    stopifnot(n> 0)
+    stopifnot(cap > 0)
+    stopifnot(n > 0)
     UseMethod("urandCap", cap)
 }
 
