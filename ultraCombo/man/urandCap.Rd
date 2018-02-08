@@ -7,9 +7,9 @@
 urandCap(cap, n = 1)
 }
 \arguments{
-\item{cap}{a 'numeric' integer cap}
+\item{cap}{a 'numeric' positive integer cap}
 
-\item{n}{a 'numeric' integer number of observations to produce}
+\item{n}{a 'numeric' positive integer number of observations to produce}
 }
 \description{
 Generate random integers in the range 1:cap
