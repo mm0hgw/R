@@ -22,7 +22,7 @@ urandCap.default <- function(cap, n = 1, ...) {
 #'@method urandCap bigz
 urandCap.bigz <- function(cap, n = 1, replace = F, ...) {
 if(replace==F)
-stopifnot(n<cap)
+stopifnot(n<=cap)
     out <- as.bigz(vector())
     while (length(out) < n) {
         out <- c(out, sapply(seq(n - length(out)), function(i) {
