@@ -32,6 +32,7 @@ urandCap.bigz <- function(cap, n = 1, replace = F, ...) {
             }
             out2
         }))
+        print(out)
         if (replace == F) {
             out <- unique(out)
         }
