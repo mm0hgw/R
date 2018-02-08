@@ -13,7 +13,6 @@ urandCap <- function(cap, n = 1, ...) {
     UseMethod("urandCap", cap)
 }
 
-
 #'@method urandCap default
 urandCap.default <- function(cap, n = 1, ...) {
     sample.int(cap, n, ...)
@@ -24,7 +23,7 @@ urandCap.default <- function(cap, n = 1, ...) {
 urandCap.bigz <- function(cap, n = 1, replace = F, ...) {
     out <- as.bigz(vector())
     while (length(out) < n) {
-        out <- append(out, sapply(seq(n - length(out)), function(i) {
+        out <- c(out, sapply(seq(n - length(out)), function(i) {
             out2 <- 0
             while (out2 <= 0 || out2 > cap) {
                 out2 <- urand.bigz(1, ceiling(log(cap, 2)), ...)
