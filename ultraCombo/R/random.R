@@ -1,6 +1,6 @@
 #'urandCap
 #'@description Generate random integers in the range 1:cap
-#'@param cap a 'numeric' positive integer cap
+#'@param cap a 'numeric' or 'bigz' positive integer cap
 #'@param n a 'numeric' positive integer number of observations to produce
 #'@export
 urandCap <- function(cap, n = 1) {
