@@ -28,13 +28,13 @@ urandCap.bigz <- function(cap, n = 1, replace = F, ...) {
         out2 <- as.bigz(vector())
         n2 <- n - length(out)
         while (length(out2) < n2) {
-            cat("inner: n2:",n2,"\n")
+            cat("inner: n2:", n2, "\n")
             out2 <- c(out2, urand.bigz(n2 - length(out2), ceiling(log(cap, 2)), ...))
             print(out2)
             out2 <- out2[out2 > as.bigz(0) & out2 <= cap]
             print(out2)
         }
-            cat("inner: n:",n,"\n")
+        cat("inner: n:", n, "\n")
         out <- c(out, out2)
         print(out)
         if (replace == F) {
