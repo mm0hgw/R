@@ -31,20 +31,13 @@
 #'@export
 superChoose <- function(n, k) {
     is.valid.superChoose.nk(n, k)
-    if (requireNamespace("gmp")) {
         out <- gmp::chooseZ(n, k)
         if (all(out < integer.precision.limit)) {
             as(out, class(integer.precision.limit))
         } else {
             out
         }
-    } else {
-        out <- hashChoose(n, k)
-        if (any((integer.precision.limit > out))) {
-            stop("Computation out of integer precision range. Install 'gmp' to extend precision range.")
-        }
-        return(out)
-    }
+   
 }
 
 is.valid.superChoose.nk <- function(n, k) {
