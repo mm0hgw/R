@@ -28,10 +28,11 @@
 #'outer(seq(11)-6+n,seq(11)-6+k,FUN=hashChoose))
 #'}
 #'@importFrom methods as
+#'@importFrom gmp chooseZ
 #'@export
 superChoose <- function(n, k) {
     is.valid.superChoose.nk(n, k)
-        out <- gmp::chooseZ(n, k)
+        out <- chooseZ(n, k)
         if (all(out < integer.precision.limit)) {
             as(out, class(integer.precision.limit))
         } else {
