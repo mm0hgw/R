@@ -32,13 +32,13 @@
 #'@export
 superChoose <- function(n, k) {
     is.valid.superChoose.nk(n, k)
-        out <- chooseZ(n, k)
-        if (all(out < integer.precision.limit)) {
-            as(out, class(integer.precision.limit))
-        } else {
-            out
-        }
-   
+    out <- chooseZ(n, k)
+    if (all(out < integer.precision.limit)) {
+        as(out, class(integer.precision.limit))
+    } else {
+        out
+    }
+    
 }
 
 is.valid.superChoose.nk <- function(n, k) {
