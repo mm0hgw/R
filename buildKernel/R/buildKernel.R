@@ -26,11 +26,12 @@ pullBuildDir <- function(HDDDir = "~/git/linux", buildDir = "/tmp/linux") {
 #' @export
 buildKernel <- function(HDDDir = "~/git/linux", buildDir = "/tmp/linux", local = system(intern = TRUE, 
     "uname -n"), jobs = max(1, parallel::detectCores() - 1), job = "bindeb-pkg", 
-    install = TRUE) {
+    install = TRUE,update=TRUE) {
+    if (update==TRUE)
+    pullBuildDir(HDDDir, buildDir)
     rev_ <- system(paste("cat ", HDDDir, "/Makefile|grep -E '(^VERSION|^PATCHLEVEL|^SUBLEVEL|^EXTRAVERSION)'|awk '{print $3;}'", 
         sep = ""), intern = TRUE)
     rev <- paste(paste(rev_[1:3], collapse = "."), rev_[4], sep = "")
-    pullBuildDir(HDDDir, buildDir)
     system(paste(sep = "", "nice -19 distcc-pump make ", job, " -j", jobs + 1, " -l", 
         jobs, " LOCALVERSION=", paste("-", local, sep = ""), " KDEB_PKGVERSION=", 
         rev))
