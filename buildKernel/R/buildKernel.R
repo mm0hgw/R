@@ -29,8 +29,8 @@ buildKernel <- function(HDDDir = "~/git/linux", buildDir = "/tmp/linux", local =
     rev <- paste(paste(rev_[1:3], collapse = "."), rev_[4], sep = "")
     if (!dir.exists(buildDir)) 
         dir.create(buildDir, recursive = TRUE)
-    system(sep='','cp -uR ',HDDDir,'/* ',buildDir) 
-    system(sep='','cp -u ',HDDDir,'/.config ',buildDir,'/.config') 
+    system(paste(sep='','cp -uR ',HDDDir,'/* ',buildDir) )
+    system(paste(sep='','cp -u ',HDDDir,'/.config ',buildDir,'/.config') )
     setwd(buildDir)
     system(paste(sep = "", "nice -19 distcc-pump make ", job, " -j", jobs + 1, " -l", 
         jobs, " LOCALVERSION=", paste("-", local, sep = ""), " KDEB_PKGVERSION=", 
