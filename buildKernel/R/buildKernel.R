@@ -20,7 +20,7 @@ pullBuildDir <- function(HDDDir = "~/git/linux", buildDir = "/tmp/linux") {
 #' buildKernel
 #' @export
 buildKernel <- function(HDDDir = "~/git/linux", buildDir = "/tmp/linux", local = system(intern = TRUE, 
-    "uname -n"), jobs = max(1, parallel::detectCores() - 1), job = "bindeb-pkg", 
+    "uname -n"), jobs = max(2, parallel::detectCores()), target = "bindeb-pkg", 
     install = TRUE, update = TRUE) {
     if (update == TRUE) 
         pullBuildDir(HDDDir, buildDir)
@@ -32,9 +32,9 @@ buildKernel <- function(HDDDir = "~/git/linux", buildDir = "/tmp/linux", local =
     system(paste(sep = "", "cp -uR ", HDDDir, "/* ", buildDir))
     system(paste(sep = "", "cp -u ", HDDDir, "/.config ", buildDir, "/.config"))
     setwd(buildDir)
-    system(paste(sep = "", "nice -19 distcc-pump make ", job, " -j", jobs + 1, " -l", 
+    system(paste(sep = "", "nice -19 distcc-pump make ", targets, " -j", jobs, " -l", 
         jobs, " LOCALVERSION=", paste("-", local, sep = ""), " KDEB_PKGVERSION=", 
-        rev, ))
+        rev ))
     if (install == TRUE) {
         installKernel(buildDir)
     }
