@@ -14,7 +14,7 @@ cloneKernel <- function(kernelCloneUrl = "https://git.kernel.org/pub/scm/linux/k
 #' @export
 pullBuildDir <- function(HDDDir = "~/git/linux", buildDir = "/tmp/linux") {
     setwd(HDDDir)
-    buildPackage::gitFetch()
+    buildPackage::gitPull()
 }
 
 #' buildKernel
