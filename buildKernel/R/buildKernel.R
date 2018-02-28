@@ -34,7 +34,7 @@ buildKernel <- function(HDDDir = "~/git/linux", buildDir = "/tmp/linux", local =
     setwd(buildDir)
     system(paste(sep = "", "nice -19 distcc-pump make ", job, " -j", jobs + 1, " -l", 
         jobs, " LOCALVERSION=", paste("-", local, sep = ""), " KDEB_PKGVERSION=", 
-        rev,))
+        rev, ))
     if (install == TRUE) {
         installKernel(buildDir)
     }
