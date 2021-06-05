@@ -119,7 +119,7 @@ gitForcePush <- function(branch = NULL) {
     if (is.null(branch)) {
         branch <- gitCurrentBranch()
     }
-    
+
     if (length(branch) == 1) {
         branch <- strsplit(branch, "/")[[1]]
     }

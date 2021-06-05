@@ -4,7 +4,7 @@
 \name{buildPackage-package}
 \title{build-package}
 \description{
-build-package
+Routines for development, building and testing.
 }
 \author{
 \strong{Maintainer}: Dale \email{dale@piratepress.org} [copyright holder]
