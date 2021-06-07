@@ -42,8 +42,8 @@ findPackages <- function(path = ".") {
 #'@import Rcpp
 #' @importFrom formatR tidy_dir
 #'@export
-buildPackage <- function(package, fetch = build, build = check || push, check = cran, 
-    cran = FALSE, add = build, commit = build, push = TRUE, install = build) {
+buildPackage <- function(package, fetch = build, build = TRUE, check = cran, cran = FALSE, 
+    add = commit, commit = push, push = FALSE, install = build) {
     Rdir <- paste(sep = "", package, "/R")
     detachPackage(package, TRUE)
     if (fetch) 

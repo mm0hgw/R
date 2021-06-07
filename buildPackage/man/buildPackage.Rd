@@ -7,12 +7,12 @@
 buildPackage(
   package,
   fetch = build,
-  build = check || push,
+  build = TRUE,
   check = cran,
   cran = FALSE,
-  add = build,
-  commit = build,
-  push = TRUE,
+  add = commit,
+  commit = push,
+  push = FALSE,
   install = build
 )
 }
