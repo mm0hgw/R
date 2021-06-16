@@ -38,7 +38,7 @@ superChoose <- function(n, k) {
     } else {
         out
     }
-    
+
 }
 
 is.valid.superChoose.nk <- function(n, k) {

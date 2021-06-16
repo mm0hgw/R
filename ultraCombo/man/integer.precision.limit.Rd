@@ -4,7 +4,9 @@
 \name{integer.precision.limit}
 \alias{integer.precision.limit}
 \title{integer.precision.limit}
-\format{An object of class \code{numeric} of length 1.}
+\format{
+An object of class \code{numeric} of length 1.
+}
 \usage{
 integer.precision.limit
 }

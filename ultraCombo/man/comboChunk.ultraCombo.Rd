@@ -4,7 +4,7 @@
 \alias{comboChunk.ultraCombo}
 \title{comboChunk.ultraCombo}
 \usage{
-\method{comboChunk}{ultraCombo}(combo, ...)
+\method{comboChunk}{ultraCombo}(combo, arg.by = combo$len)
 }
 \arguments{
 \item{combo}{an 'ultraCombo' to chunk}

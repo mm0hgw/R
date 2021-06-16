@@ -51,7 +51,7 @@ is.valid.nk <- function(n, k) {
             collapse = ",")))
     }
     if (sum(n%%1 != 0) > 0) {
-        
+
         error_list <- c(error_list, paste("non integer n argument:", paste(n[n%%1 != 
             0], collapse = ",")))
     }

@@ -8,7 +8,7 @@
 dataCombo <- function(combo, dataObj, FUN = return) {
     stopifnot(is.ultraCombo(combo))
     stopifnot(is.function(FUN) || is.primitive(FUN))
-    
+
     out <- combo
     if (is.null(dim(dataObj))) {
         out$dGen <- function(i) {

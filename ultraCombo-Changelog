@@ -1,5 +1,8 @@
 	Changelog
 
+	0.2.1:
+refactor for new bit::chunk API
+
 	0.2.0:
 reimplement C backend in R
 
