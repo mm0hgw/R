@@ -14,8 +14,8 @@ comboChunk <- function(combo, ...) {
 #'@method comboChunk ultraCombo
 #'@export
 comboChunk.ultraCombo <- function(combo, ...) {
-    lapply(bit::chunk(combo$i, ...), function(i) {
-        ultraCombo(i, combo$n, combo$k)
+    lapply(bit::chunk(combo$i, ...), function(index) {
+        ultraCombo(combo$i[index], combo$n, combo$k)
     })
 }
 

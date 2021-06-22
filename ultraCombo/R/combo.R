@@ -52,14 +52,17 @@ ultraCombo <- function(i, n, k) {
 #'@param ... ignored
 #'@importFrom utils object.size
 #'@method print ultraCombo
-#'@inheritParams setdiff.combo
-#'#stopifnot(4==
-#'#intersect.combo(a,b,4)$i
-#'print(intersect.combo(seq(3)+3,b)$i)
 #'@export
 print.ultraCombo <- function(x, ...) {
     cat(paste(sep = "\n", paste(sep = "", "ultraCombo object n=", x$n, " k=", x$k), 
         paste("contains", x$len, "indices,"), paste("has size of", object.size(x), 
             "bytes"), ""))
     invisible(x)
+}
+
+#'length.ultraCombo
+#'@method length ultraCombo
+#'@export
+length.ultraCombo <- function(x, ...) {
+    x$len
 }

@@ -1,0 +1,4 @@
+setSensibleThreads()
+setChunkSize()
+setLapply()
+setSeededLapply()

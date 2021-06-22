@@ -97,6 +97,6 @@ revCombnGenElemGenR <- function(p) {
         if (invert == TRUE) {
             out <- imirror - out
         }
-        out
+        ultraCombo(out, p$n, k)
     }
 }
