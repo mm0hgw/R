@@ -93,7 +93,7 @@ notBitChunk <- function(x, chunkSize = getChunkSize()) {
     l <- length(x)
     nMinusOne <- (l%/%chunkSize) - 1
     lapply(seq(0, nMinusOne), function(y) {
-        start <- (y * chunkSize)+1
+        start <- (y * chunkSize) + 1
         if (y == nMinusOne) 
             end <- l else end <- ((y + 1) * chunkSize)
 
