@@ -1,7 +1,7 @@
 #'spinUpAndRun
 #'@export
-spinUpAndRun <- function(x, FUN, targetTime = 0.1, LAPPLYFUN = getLapply()) {
-    if (getSensibleThreads == 1) 
+spinUpAndRun <- function(x, FUN, targetTime = 0.1, LAPPLYFUN = getLapply(), COLLATEFUN = lapply) {
+    if (getSensibleThreads() == 1) 
         return(list(FUN(x)))
     nr <- 2
     exp <- 0
@@ -16,7 +16,8 @@ spinUpAndRun <- function(x, FUN, targetTime = 0.1, LAPPLYFUN = getLapply()) {
         seqStart <- seqEnd + 1
         seqEnd <- min(seqEnd + nre, l)
         cat("seqStart", seqStart, "seqEnd", seqEnd, "\n")
-        if (seqEnd >= l || targetTime < threadTime(out <- FUN(x[seq(seqStart, seqEnd)]))) 
+        if (targetTime < threadTime(out <- FUN(x[seq(seqStart, seqEnd)])) || seqEnd == 
+            l) 
             flag <- TRUE
         outList[[exp]] <- out
     }
@@ -31,13 +32,14 @@ spinUpAndRun <- function(x, FUN, targetTime = 0.1, LAPPLYFUN = getLapply()) {
             n2 <- n2 + 1
         }
         print(cbind(seqStart2, seqEnd2))
-        outList2 <- LAPPLYFUN(seq(n2), function(y) {
+        outList2 <- LAPPLYFUN(seq_along(seqStart), function(y) {
             FUN(x[seq(seqStart2[y], seqEnd2[y])])
 
         })
+        print(outList2)
         outList <- append(outList, outList2)
     }
-    outList
+    do.call(COLLATEFUN, outList)
 }
 
 threadTime <- function(expr, ...) {

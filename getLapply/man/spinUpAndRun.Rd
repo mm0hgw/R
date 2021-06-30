@@ -4,7 +4,13 @@
 \alias{spinUpAndRun}
 \title{spinUpAndRun}
 \usage{
-spinUpAndRun(x, FUN, targetTime = 0.1, LAPPLYFUN = getLapply())
+spinUpAndRun(
+  x,
+  FUN,
+  targetTime = 0.1,
+  LAPPLYFUN = getLapply(),
+  COLLATEFUN = lapply
+)
 }
 \description{
 spinUpAndRun
