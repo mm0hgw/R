@@ -3,7 +3,6 @@
 #'@param combo an 'ultraCombo'
 #'@param dataObj a data object
 #'@param FUN a 'function' used to process data after slicing. Default is invisible()
-#'@param ... extra args for '['
 #'@export
 dataCombo <- function(combo, dataObj, FUN = return) {
     stopifnot(is.ultraCombo(combo))
@@ -24,4 +23,14 @@ dataCombo <- function(combo, dataObj, FUN = return) {
     out$dataObj <- dataObj
     class(out) <- c("dataCombo", class(out))
     out
+}
+
+#'print.dataCombo
+#'@method print dataCombo
+#'@export
+print.dataCombo <- function(x, ...) {
+    cat(" -=* dataCombo object *=-\n")
+    print(x$dataObj)
+    cat("   ----====* & *====----\n")
+    NextMethod()
 }

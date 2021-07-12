@@ -12,8 +12,6 @@ dataCombo(combo, dataObj, FUN = return)
 \item{dataObj}{a data object}
 
 \item{FUN}{a 'function' used to process data after slicing. Default is invisible()}
-
-\item{...}{extra args for '['}
 }
 \description{
 A method to wrap a data object with an ultraCombo.
