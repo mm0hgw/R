@@ -4,8 +4,17 @@
 \alias{forkBombGen}
 \title{forkBombGen}
 \usage{
-forkBombGen(FUN, LAPPLYFUN = getLapply(), COLLATEFUN = invisible)
+forkBombGen(FUN, COLLATEFUN = list)
+}
+\arguments{
+\item{FUN}{a single argument function to parallelise.}
+
+\item{COLLATEFUN}{a function used to collate results. Default is list()}
+}
+\value{
+When run with list() as the COLLATEFUN() parameter, a list per
+thread run, of lists per argument run through FUN().
 }
 \description{
-forkBombGen
+A function generator to simplify parallelisation.
 }
