@@ -7,5 +7,5 @@
 getSeededLapply()
 }
 \description{
-Get a lapply
+Get a lapply with an explicity unique PRNG seed.
 }

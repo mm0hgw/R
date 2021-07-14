@@ -12,7 +12,8 @@ chunk(len, threads = getSensibleThreads())
 \item{threads}{the number of chunks to create}
 }
 \value{
-a list of c(start,end) vectors defining chunks
+a list (even if there's just one) of lists of (start,end) 
+arguments useable via do.call(seq,x)
 }
 \description{
 chunk

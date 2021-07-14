@@ -1,4 +1,3 @@
 setSensibleThreads()
-setChunkSize()
 setLapply()
 setSeededLapply()

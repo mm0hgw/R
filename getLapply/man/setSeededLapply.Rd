@@ -10,5 +10,5 @@ setSeededLapply(x = lapply)
 \item{x}{a 'function'}
 }
 \description{
-Set the served lapply.
+Set the served lapply with an explicity unique PRNG seed.
 }

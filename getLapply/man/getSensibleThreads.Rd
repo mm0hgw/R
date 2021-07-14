@@ -7,5 +7,5 @@
 getSensibleThreads()
 }
 \description{
-getSensibleThreads
+Get the sensible number of threads to plan to run concurrently.
 }

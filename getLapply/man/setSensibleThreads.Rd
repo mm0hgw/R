@@ -11,5 +11,5 @@ setSensibleThreads(x = max(1, parallel::detectCores() - 1))
 Default : \code{max(1,parallel::detectCores()-1)}}
 }
 \description{
-setSensibleThreads
+Get the sensible number of threads to plan to run concurrently.
 }
