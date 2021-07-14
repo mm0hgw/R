@@ -30,7 +30,7 @@ dataCombo <- function(combo, dataObj, FUN = return) {
 #'@export
 print.dataCombo <- function(x, ...) {
     cat(" -=* dataCombo object *=-\n")
-    print(x$dataObj)
+    summary(x$dataObj)
     cat("   ----====* & *====----\n")
     NextMethod()
 }
