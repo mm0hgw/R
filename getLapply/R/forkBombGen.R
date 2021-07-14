@@ -9,17 +9,10 @@
 forkBombGen <- function(FUN, COLLATEFUN = list) {
     function(x) {
         LAPPLYFUN = getLapply()
-        thr <- getSensibleThreads()
-        l <- length(x)
-        chunkSize <- l%/%thr
-        if (chunkSize < 1 || thr < 2) 
-            return(COLLATEFUN(do.call(COLLATEFUN, lapply(seq_along(x), function(z) FUN(x[z])))))
-        seqEnd <- (seq(thr) * chunkSize) + l - (thr * chunkSize)
-        seqStart <- 1 - chunkSize + seqEnd
-        seqStart[1] <- 1
-        # print(cbind(seqStart, seqEnd))
-        do.call(COLLATEFUN, LAPPLYFUN(seq(thr), function(y) {
-            do.call(COLLATEFUN, lapply(seq(seqStart[y], seqEnd[y]), function(z) {
+        chunks <- chunk(length(x))
+        # print(chunks)
+        do.call(COLLATEFUN, LAPPLYFUN(chunks, function(y) {
+            do.call(COLLATEFUN, lapply(seq(y["start"], y["end"]), function(z) {
                 FUN(x[z])
             }))
         }))

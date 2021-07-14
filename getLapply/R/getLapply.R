@@ -87,16 +87,22 @@ setSensibleThreads <- function(x = max(1, parallel::detectCores() - 1)) {
 
 }
 
-#'notBitChunk
+#'chunk
+#'@param len the index range to divide
+#'@param threads the number of chunks to create
+#'@return a list of c(start,end) vectors defining chunks
 #'@export
-notBitChunk <- function(x, chunkSize = getChunkSize()) {
-    l <- length(x)
-    nMinusOne <- (l%/%chunkSize) - 1
-    lapply(seq(0, nMinusOne), function(y) {
-        start <- (y * chunkSize) + 1
-        if (y == nMinusOne) 
-            end <- l else end <- ((y + 1) * chunkSize)
+chunk <- function(len, threads = getSensibleThreads()) {
+    stopifnot(length(len) == 1 && len%%1 != 0)
+    stopifnot(length(threads) == 1 && threads%%1 != 0)
+    chunkSize <- len%/%threads
 
-        x[seq(start, end)]
-    })
+    if (chunkSize < 1 || threads < 2) 
+        return(list(c(start = 1, end = len)))
+
+    seqEnd <- seq(threads) * chunkSize + len - threads * chunkSize
+    seqStart <- seqEnd - chunkSize + 1
+    seqStart[1] <- 1
+
+    lapply(seq(threads), function(y) c(start = seqStart[y], end = seqEnd[y]))
 }
