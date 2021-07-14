@@ -98,11 +98,11 @@ chunk <- function(len, threads = getSensibleThreads()) {
     chunkSize <- len%/%threads
 
     if (chunkSize < 1 || threads < 2) 
-        return(list(c(start = 1, end = len)))
+        return(list(list(start = 1, end = len)))
 
     seqEnd <- seq(threads) * chunkSize + len - threads * chunkSize
     seqStart <- seqEnd - chunkSize + 1
     seqStart[1] <- 1
 
-    lapply(seq(threads), function(y) c(start = seqStart[y], end = seqEnd[y]))
+    lapply(seq(threads), function(y) list(start = seqStart[y], end = seqEnd[y]))
 }

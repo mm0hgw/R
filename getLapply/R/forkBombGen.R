@@ -12,7 +12,7 @@ forkBombGen <- function(FUN, COLLATEFUN = list) {
         chunks <- chunk(length(x))
         # print(chunks)
         do.call(COLLATEFUN, LAPPLYFUN(chunks, function(y) {
-            do.call(COLLATEFUN, lapply(seq(y["start"], y["end"]), function(z) {
+            do.call(COLLATEFUN, lapply(do.call(seq, y), function(z) {
                 FUN(x[z])
             }))
         }))
