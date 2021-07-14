@@ -11,8 +11,8 @@ forkBombGen <- function(FUN, COLLATEFUN = list) {
         LAPPLYFUN = getLapply()
         chunks <- chunk(length(x))
         # print(chunks)
-        do.call(COLLATEFUN, LAPPLYFUN(chunks, function(y) {
-            do.call(COLLATEFUN, lapply(do.call(seq, y), function(z) {
+        do.call(COLLATEFUN, LAPPLYFUN(chunks, function(seqArgs) {
+            do.call(COLLATEFUN, lapply(do.call(seq, seqArgs), function(z) {
                 FUN(x[z])
             }))
         }))
