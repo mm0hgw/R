@@ -9,13 +9,13 @@ comboChunk <- function(combo, ...) {
 
 #'comboChunk.ultraCombo
 #'@param combo an 'ultraCombo' to chunk
-#'@param ... arguments for bit::chunk
 #'@importFrom getLapply chunk
 #'@method comboChunk ultraCombo
 #'@export
-comboChunk.ultraCombo <- function(combo, ...) {
+comboChunk.ultraCombo <- function(combo) {
     lapply(getLapply::chunk(length(combo)), function(seqArgs) {
-        ultraCombo(combo$i[do.call(seq,seqArgs)], combo$n, combo$k)
+	out <- combo
+        out$i <- out$i[do.call(seq,seqArgs)]
     })
 }
 
