@@ -4,12 +4,10 @@
 \alias{comboChunk.ultraCombo}
 \title{comboChunk.ultraCombo}
 \usage{
-\method{comboChunk}{ultraCombo}(combo, ...)
+\method{comboChunk}{ultraCombo}(combo)
 }
 \arguments{
 \item{combo}{an 'ultraCombo' to chunk}
-
-\item{...}{arguments for bit::chunk}
 }
 \description{
 comboChunk.ultraCombo

@@ -4,21 +4,29 @@
 #'@param dataObj a data object
 #'@param FUN a 'function' used to process data after slicing. Default is invisible()
 #'@export
-dataCombo <- function(combo, dataObj, FUN = return) {
+dataCombo <- function(combo, dataObj) {
     stopifnot(is.ultraCombo(combo))
-    stopifnot(is.function(FUN) || is.primitive(FUN))
 
     out <- combo
+    combnGen <- combnGG(combo$n, combo$k)
     if (is.null(dim(dataObj))) {
-        out$dGen <- function(i) {
-            stopifnot(length(i) == 1)
-            FUN(dataObj[combo$Gen(i)])
+        wrappedFunGen <- function(FUN) {
+            function(iX) {
+                FUN(dataObj[combnGen(iX)])
+            }
         }
     } else {
-        out$dGen <- function(i) {
-            stopifnot(length(i) == 1)
-            FUN(dataObj[combo$Gen(i), TRUE])
+        wrappedFunGen <- function(FUN) {
+            function(iX) {
+                FUN(dataObj[combnGen(iX), TRUE])
+            }
         }
+    }
+    out$dGen <- function(FUN = return, COLLATEFUN = list) {
+        stopifnot(is.function(FUN) || is.primitive(FUN))
+        WRAPPEDFUN <- wrappedFunGen(FUN)
+        FORKBOMBFUN <- forkBombGen(WRAPPEDFUN, COLLATEFUN)
+        FORKBOMBFUN(combo$i)
     }
     out$dataObj <- dataObj
     class(out) <- c("dataCombo", class(out))

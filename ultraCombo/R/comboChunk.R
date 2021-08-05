@@ -14,8 +14,8 @@ comboChunk <- function(combo, ...) {
 #'@export
 comboChunk.ultraCombo <- function(combo) {
     lapply(getLapply::chunk(length(combo)), function(seqArgs) {
-	out <- combo
-        out$i <- out$i[do.call(seq,seqArgs)]
+        out <- combo
+        out$i <- out$i[do.call(seq, seqArgs)]
     })
 }
 

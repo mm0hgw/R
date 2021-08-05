@@ -1,5 +1,8 @@
 	Changelog
 
+	0.2.2:
+refactor dataCombo for new paradigm
+
 	0.2.1:
 refactor for new bit::chunk API
 

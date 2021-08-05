@@ -4,7 +4,7 @@
 \alias{dataCombo}
 \title{dataCombo}
 \usage{
-dataCombo(combo, dataObj, FUN = return)
+dataCombo(combo, dataObj)
 }
 \arguments{
 \item{combo}{an 'ultraCombo'}
