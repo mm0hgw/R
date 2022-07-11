@@ -4,10 +4,15 @@
 \alias{buildKernel}
 \title{buildKernel}
 \usage{
-buildKernel(HDDDir = "~/git/linux", buildDir = "/tmp/linux",
-  local = system(intern = TRUE, "uname -n"), jobs = max(2,
-  parallel::detectCores()), target = "bindeb-pkg", install = TRUE,
-  update = TRUE)
+buildKernel(
+  HDDDir = "~/git/linux",
+  buildDir = "/tmp/linux",
+  local = system(intern = TRUE, "uname -n"),
+  jobs = max(2, parallel::detectCores()),
+  target = "bindeb-pkg",
+  install = TRUE,
+  update = TRUE
+)
 }
 \description{
 buildKernel

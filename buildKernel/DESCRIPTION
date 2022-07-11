@@ -8,4 +8,4 @@ Imports: buildPackage
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 7.2.0

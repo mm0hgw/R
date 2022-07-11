@@ -2,11 +2,11 @@
 #'@param x object to test
 #'@export
 is.ultraCombo <- function(x) {
-    if (!(inherits(x, "ultraCombo"))) 
+    if (!(inherits(x, "ultraCombo")))
         return(FALSE)
-    if (!is.valid.nk(x$n, x$k)) 
+    if (!is.valid.nk(x$n, x$k))
         return(FALSE)
-    if (!is.valid.index(x$i, x$n, x$k)) 
+    if (!is.valid.index(x$i, x$n, x$k))
         return(FALSE)
     return(TRUE)
 }
@@ -43,20 +43,20 @@ is.valid.nk <- function(n, k) {
     # cat('is.valid.nk:',n,k,'\n')
     error_list <- vector()
     if (length(n) != 1) {
-        error_list <- c(error_list, paste("n argument is invalid length", paste(n, 
+        error_list <- c(error_list, paste("n argument is invalid length", paste(n,
             collapse = ",")))
     }
     if (length(k) != 1) {
-        error_list <- c(error_list, paste("k argument is invalid length", paste(k, 
+        error_list <- c(error_list, paste("k argument is invalid length", paste(k,
             collapse = ",")))
     }
     if (sum(n%%1 != 0) > 0) {
 
-        error_list <- c(error_list, paste("non integer n argument:", paste(n[n%%1 != 
+        error_list <- c(error_list, paste("non integer n argument:", paste(n[n%%1 !=
             0], collapse = ",")))
     }
     if (sum(k%%1 != 0) > 0) {
-        error_list <- c(error_list, paste("non integer k argument:", paste(k[k%%1 != 
+        error_list <- c(error_list, paste("non integer k argument:", paste(k[k%%1 !=
             0], collapse = ",")))
     }
     maxint <- .Machine$integer.max
@@ -101,7 +101,7 @@ is.valid.index <- function(i, n, k) {
     }
     errors <- c(i[(i < 1)], i[(i > superChoose(n, k))])
     if (length(errors) > 0) {
-        error_list <- c(error_list, paste("i values out of range:", paste(errors, 
+        error_list <- c(error_list, paste("i values out of range:", paste(errors,
             collapse = ":")))
     }
     if (length(error_list) > 0) {
@@ -139,23 +139,23 @@ is.valid.combination <- function(x, n) {
         error_list <- vector()
         errors <- x[x%%1 != 0]
         if (length(errors) > 0) {
-            error_list <- c(error_list, paste("non integer x input:", paste(errors, 
+            error_list <- c(error_list, paste("non integer x input:", paste(errors,
                 collapse = ":")))
         }
         errors <- c(x[(x < 1)], x[(x > n)])
         if (length(errors) > 0) {
-            error_list <- c(error_list, paste("x values out of range:", paste(errors, 
+            error_list <- c(error_list, paste("x values out of range:", paste(errors,
                 collapse = ":")))
         }
         errors <- x[duplicated(x)]
         if (length(errors) > 0) {
-            error_list <- c(error_list, paste("duplicate x values", paste(errors, 
+            error_list <- c(error_list, paste("duplicate x values", paste(errors,
                 collapse = ":")))
         }
         if (length(error_list) > 0) {
             stop(paste(error_list, collapse = ":"))
         } else {
-            if (length(x) != 0) 
+            if (length(x) != 0)
                 return(2)
             return(1)
         }

@@ -8,7 +8,7 @@ chunk <- function(len, threads = getSensibleThreads()) {
     stopifnot(length(len) == 1 && len%%1 == 0)
     stopifnot(length(threads) == 1 && threads%%1 == 0)
 
-    if (threads < 2) 
+    if (threads < 2)
         return(list(list(start = 1, end = len)))
 
     chunkSize <- len%/%threads

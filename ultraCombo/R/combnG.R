@@ -50,7 +50,7 @@ combnGG <- function(n, k) {
     }
     combnGen <- function(index, .combine = rbind) {
         debugCat("combnGen", n, k)
-        switch(is.valid.index(index, n, k), vector(), combnGenElem(index), do.call(.combine, 
+        switch(is.valid.index(index, n, k), vector(), combnGenElem(index), do.call(.combine,
             lapply(index, combnGenElem)))
     }
     return(combnGen)

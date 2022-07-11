@@ -11,8 +11,8 @@ getProfile <- function(n, k) {
         if (requireNamespace("gmp")) {
             out$indexType <- "bigz"
         } else {
-            stop(paste("Combination too big. Install 'gmp' package to extend range.", 
-                "n:", n, "k:", k, "choose(n,k):", choose(n, k), "limit:", integer.precision.limit, 
+            stop(paste("Combination too big. Install 'gmp' package to extend range.",
+                "n:", n, "k:", k, "choose(n,k):", choose(n, k), "limit:", integer.precision.limit,
                 sep = " "))
         }
     }

@@ -89,7 +89,7 @@ validateInput <- function(...) {
     }
     n <- sapply(lc, function(x) x$n)
     k <- sapply(lc, function(x) x$k)
-    if (sum(duplicated(n)) != length(n) - 1 || sum(duplicated(k)) != length(k) - 
+    if (sum(duplicated(n)) != length(n) - 1 || sum(duplicated(k)) != length(k) -
         1) {
         stop("input combos disagree on n,k parameters")
     }

@@ -8,4 +8,4 @@ Depends:
 License: GPL-2
 LazyData: true
 Imports: bit, methods, utils, gmp
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.0

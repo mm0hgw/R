@@ -55,7 +55,7 @@ getSensibleThreads <- function() {
 #'Get the sensible number of threads to plan to run concurrently.
 #'@param x a positive 'integer' defining a sensible number of threads to run. 
 #'  Default : \code{max(1,parallel::detectCores()-1)}
-#'@importfrom parallel detectCores
+#'@importFrom parallel detectCores
 #'@export
 setSensibleThreads <- function(x = max(1, parallel::detectCores() - 1)) {
     stopifnot(length(x) == 1)

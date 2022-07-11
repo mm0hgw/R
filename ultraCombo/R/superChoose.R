@@ -67,13 +67,13 @@ hashChoose <- function(n, k) {
         nk <- cbind(n, k)
         do.call(c, lapply(seq(nrow(nk)), function(x) hashChoose(nk[x, 1], nk[x, 2])))
     } else {
-        if (k > n) 
+        if (k > n)
             return(0)
-        if (2 * k > n) 
+        if (2 * k > n)
             k <- n - k
-        if (k == 0) 
+        if (k == 0)
             return(1)
-        if (k == 1) 
+        if (k == 1)
             return(n)
         name <- paste(n, k, sep = "C")
         if (exists(name, envir = chooseEnv)) {

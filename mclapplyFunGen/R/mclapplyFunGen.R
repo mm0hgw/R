@@ -1,11 +1,11 @@
 #'mclapplyFunGen
 #'@importFrom parallel mclapply
-#'@importFrom get.lapply get.sensible.threads
+#'@importFrom getLapply getSensibleThreads
 #'@export
-mclapplyFunGen <- function(mc.preschedule = TRUE, mc.set.seed = FALSE, mc.silent = TRUE, 
-    mc.cores = get.lapply::get.sensible.threads() {
+mclapplyFunGen <- function(mc.preschedule = TRUE, mc.set.seed = FALSE, mc.silent = TRUE,
+    mc.cores = getLapply::getSensibleThreads()) {
     function(...) {
-        parallel::mclapply(..., mc.preschedule = mc.preschedule, mc.set.seed = mc.set.seed, 
+        parallel::mclapply(..., mc.preschedule = mc.preschedule, mc.set.seed = mc.set.seed,
             mc.silent = mc.silent, mc.cores = mc.cores)
     }
 }

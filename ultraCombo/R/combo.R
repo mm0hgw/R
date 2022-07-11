@@ -17,7 +17,7 @@
 ultraCombo <- function(i, n, k) {
     is.valid.nk(n, k)
     is.valid.index(i, n, k)
-    if (length(i) == 0 || max(i) < .Machine$integer.max) 
+    if (length(i) == 0 || max(i) < .Machine$integer.max)
         i <- as.integer(i)
     combnGen <- combnGG(n, k)
     out <- list(i = i, len = length(i), n = as.integer(n), k = as.integer(k), Gen = function(x) {
@@ -25,7 +25,7 @@ ultraCombo <- function(i, n, k) {
             stop("index out of range")
         }
         combnGen(i[x])
-    }, sample = function(sampleSize = 1000) ultraCombo(i[urandCap(length(i), sampleSize)], 
+    }, sample = function(sampleSize = 1000) ultraCombo(i[urandCap(length(i), sampleSize)],
         n, k))
     class(out) <- "ultraCombo"
     out
@@ -54,8 +54,8 @@ ultraCombo <- function(i, n, k) {
 #'@method print ultraCombo
 #'@export
 print.ultraCombo <- function(x, ...) {
-    cat(paste(sep = "\n", paste(sep = "", "ultraCombo object n=", x$n, " k=", x$k), 
-        paste("contains", x$len, "indices,"), paste("has size of", object.size(x), 
+    cat(paste(sep = "\n", paste(sep = "", "ultraCombo object n=", x$n, " k=", x$k),
+        paste("contains", x$len, "indices,"), paste("has size of", object.size(x),
             "bytes"), ""))
     invisible(x)
 }
