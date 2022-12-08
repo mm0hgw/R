@@ -8,7 +8,7 @@
 #'@return a list (even if there's just one) of lists of (from,to)  
 #'arguments useable via do.call(seq,x)
 #'@export
-chunk <- function(from, to, chunkSize = NULL, threads = NULL) {
+chunk <- function(to, from = 1, chunkSize = NULL, threads = NULL) {
     stopifnot(length(from) == 1 && from%%1 == 0)
     stopifnot(length(to) == 1 && to%%1 == 0)
     stopifnot(from < to)

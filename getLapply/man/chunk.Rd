@@ -2,19 +2,27 @@
 % Please edit documentation in R/chunk.R
 \name{chunk}
 \alias{chunk}
-\title{chunk}
+\title{chunk
+Trying to set both threads and chunkSize will return an error. 
+If you know both, you don't need this.}
 \usage{
-chunk(len, threads = getSensibleThreads())
+chunk(to, from = 1, chunkSize = NULL, threads = NULL)
 }
 \arguments{
-\item{len}{the index range to divide}
+\item{to}{the end of the index range to chunk}
+
+\item{from}{the start of the index range to chunk}
+
+\item{chunkSize}{the size of chunks to create}
 
 \item{threads}{the number of chunks to create}
 }
 \value{
-a list (even if there's just one) of lists of (start,end) 
+a list (even if there's just one) of lists of (from,to)  
 arguments useable via do.call(seq,x)
 }
 \description{
 chunk
+Trying to set both threads and chunkSize will return an error. 
+If you know both, you don't need this.
 }
