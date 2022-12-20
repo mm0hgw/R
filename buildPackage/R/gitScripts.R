@@ -9,11 +9,11 @@ gitClone <- function(url) {
 #'@description Execute a git pull
 #'@export
 gitPull <- function() {
-    system2("git", c("pull", "--rebase=preserve"))
+    system2("git", c("pull", "--rebase=merges"))
 }
 
 getBranch <- function(branch = NULL) {
-    if (is.null(branch)) 
+    if (is.null(branch))
         branch <- gitCurrentBranch()
     branch <- strsplit(branch, "/")[[1]]
     branch
@@ -26,7 +26,7 @@ getBranch <- function(branch = NULL) {
 gitFetch <- function(branch = NULL, merge = TRUE) {
     branch <- getBranch(branch)
     system2("git", c("fetch", branch, "--prune"))
-    if (merge) 
+    if (merge)
         gitMerge(branch)
 }
 
@@ -136,7 +136,7 @@ gitExpunge <- function(fileName, n = 200) {
         gitExpunge(head(fileName, n = n))
         fileName <- fileName[-seq(n)]
     }
-    system(paste(sep = "", "git filter-branch --tag-name-filter cat ", "--index-filter 'git rm -r --cached --ignore-unmatch ", 
+    system(paste(sep = "", "git filter-branch --tag-name-filter cat ", "--index-filter 'git rm -r --cached --ignore-unmatch ",
         paste(collapse = " ", fileName), "' --prune-empty -f -- --all"))
 }
 

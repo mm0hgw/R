@@ -42,15 +42,15 @@ findPackages <- function(path = ".") {
 #'@import Rcpp
 #' @importFrom formatR tidy_dir
 #'@export
-buildPackage <- function(package, fetch = build, build = TRUE, check = cran, cran = FALSE, 
+buildPackage <- function(package, fetch = build, build = TRUE, check = cran, cran = FALSE,
     add = commit, commit = push, push = FALSE, install = build) {
     Rdir <- paste(sep = "", package, "/R")
     detachPackage(package, TRUE)
-    if (fetch) 
+    if (fetch)
         gitPull()
     if (build) {
         # RcppExports gets b0rked by formatR, so remove and regenerate
-        RcppFiles <- paste(sep = "", package, "/", c("R", "src"), "/RcppExports.", 
+        RcppFiles <- paste(sep = "", package, "/", c("R", "src"), "/RcppExports.",
             c("R", "cpp"))
         lapply(RcppFiles[sapply(RcppFiles, file.exists)], file.remove)
         formatR::tidy_dir(Rdir)
@@ -58,15 +58,15 @@ buildPackage <- function(package, fetch = build, build = TRUE, check = cran, cra
         Rcpp::compileAttributes(package)
         devtools::build(package)
     }
-    if (check) 
+    if (check)
         devtools::check(package, cran = cran)
-    if (add) 
+    if (add)
         addPackage(package)
-    if (commit) 
+    if (commit)
         commitPackage(package)
-    if (push) 
+    if (push)
         gitPush()
-    if (install) 
+    if (install)
         installPackage(package)
 }
 
@@ -89,10 +89,10 @@ installPackage <- function(package) {
 
 addPackage <- function(package) {
     # list roxygen generated files
-    roxygenfiles <- paste(sep = "", package, c("/DESCRIPTION", "/NAMESPACE", "/R/RcppExports.R", 
-        "/src/RcppExports.cpp", paste(sep = "", "/R/", list.files(paste(sep = "", 
-            package, "/R/"), pattern = "*.R")), paste(sep = "", "/man/", list.files(paste(sep = "", 
-            package, "/man/"), pattern = "*.Rd")), paste(sep = "", "/src/", list.files(paste(sep = "", 
+    roxygenfiles <- paste(sep = "", package, c("/DESCRIPTION", "/NAMESPACE", "/R/RcppExports.R",
+        "/src/RcppExports.cpp", paste(sep = "", "/R/", list.files(paste(sep = "",
+            package, "/R/"), pattern = "*.R")), paste(sep = "", "/man/", list.files(paste(sep = "",
+            package, "/man/"), pattern = "*.Rd")), paste(sep = "", "/src/", list.files(paste(sep = "",
             package, "/src/"), pattern = "(*.c)|(*.cpp)|(*.h)|(*.hpp)|"))))
     files <- roxygenfiles
     # print(files)

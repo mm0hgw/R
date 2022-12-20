@@ -6,12 +6,12 @@
 Trying to set both threads and chunkSize will return an error. 
 If you know both, you don't need this.}
 \usage{
-chunk(to, from = 1, chunkSize = NULL, threads = NULL)
+chunk(from = 1, to, chunkSize = NULL, threads = NULL)
 }
 \arguments{
-\item{to}{the end of the index range to chunk}
-
 \item{from}{the start of the index range to chunk}
+
+\item{to}{the end of the index range to chunk}
 
 \item{chunkSize}{the size of chunks to create}
 
