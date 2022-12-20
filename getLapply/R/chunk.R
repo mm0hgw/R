@@ -15,11 +15,12 @@ chunk <- function(from = 1, to, chunkSize = NULL, threads = NULL) {
     len <- to - from
     if (!is.null(chunkSize)) {
         stopifnot(is.null(threads))
+        stopifnot(length(chunkSize) == 1 && chunkSize%%1 == 0)
         stopifnot(chunkSize%%1 == 0 && chunkSize > 0)
         threads <- len%/%chunkSize
     } else {
         if (!is.null(threads)) {
-            stopifnot(threads%%1 == 0 && threads > 0)
+            stopifnot(length(threads) == 1 && threads%%1 == 0 && threads > 0)
         } else {
             threads <- getSensibleThreads()
         }
