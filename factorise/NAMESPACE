@@ -3,6 +3,8 @@
 export(factorise)
 export(getPrimes)
 export(primesN)
+export(resetCache)
+export(setChunkSize)
 importFrom(getLapply,chunk)
 importFrom(getLapply,getLapply)
 importFrom(multiUnion,multiUnion)

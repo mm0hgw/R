@@ -8,19 +8,7 @@
 #'@param ... vectors of values
 #'@export
 multiUnion <- function(...) {
-    arg <- list(...)
-    if (length(arg) == 0)
-        return(vector())
-    while (length(arg) > 1) {
-        temp <- lapply(seq(length(arg)%/%2), function(x) {
-            union(arg[[2 * x - 1]], arg[[2 * x]])
-        })
-        if (length(arg)%%2 == 1) {
-            temp <- append(temp, arg[length(arg)])
-        }
-        arg <- temp
-    }
-    arg[[1]]
+    unique(c(...))
 }
 
 #'multiIntersect

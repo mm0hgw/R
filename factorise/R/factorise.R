@@ -1,11 +1,3 @@
-# setup cache
-primesEnv <- new.env()
-assign("cap", 1, envir = primesEnv)
-assign("primes", vector(), envir = primesEnv)
-assign("chunkSize", 1e+07, envir = primesEnv)
-
-precisionLimit <- 2^.Machine$double.digits - 1
-
 #' getPrimes
 #'@param x a 'numeric' integer describing the maximum desired prime.
 #' @export
@@ -87,9 +79,7 @@ primeGenThread <- function(fromto) {
     }
     fun <- nonPrimeGen(from, to)
     p <- getPrimes(floor(sqrt(to)))
-    LAPPLYFUN <- getLapply::getLapply()
-    x <- LAPPLYFUN(p, fun)
-    np <- do.call(multiUnion::multiUnion, x)
+    np <- do.call(multiUnion::multiUnion, lapply(p, fun))
     setdiff(seq(from + 1, to), np)
 }
 
@@ -98,7 +88,6 @@ primeGen <- function(from, to) {
     catp("primeGen", from, to)
     chunkSize <- get("chunkSize", envir = primesEnv)
     r <- getLapply::chunk(from, to, chunkSize = chunkSize)
-    print(do.call(rbind, r))
     cat(paste("from", from, "to", to, ":", to - from, "candidates... Running", length(r),
         "jobs\n"))
     LAPPLYFUN <- getLapply::getLapply()
